@@ -1,8 +1,0 @@
-{
-  "type": "paletteModification",
-  "target": "itemswapper:v2/functional/lights",
-  "addItems": [
-    "auroraslanterns:amethyst_lantern",
-    "auroraslanterns:redstone_lantern"
-  ]
-}

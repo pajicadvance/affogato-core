@@ -1,7 +1,0 @@
-{
-  "type": "paletteModification",
-  "target": "itemswapper:v2/wood/jungle",
-  "addItems": [
-    "farmersdelight:jungle_cabinet"
-  ]
-}

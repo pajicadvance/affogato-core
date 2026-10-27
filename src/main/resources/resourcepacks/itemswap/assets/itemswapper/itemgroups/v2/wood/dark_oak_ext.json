@@ -1,7 +1,0 @@
-{
-  "type": "paletteModification",
-  "target": "itemswapper:v2/wood/dark_oak",
-  "addItems": [
-    "farmersdelight:dark_oak_cabinet"
-  ]
-}

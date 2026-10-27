@@ -1,8 +1,0 @@
-{
-  "type": "paletteModification",
-  "target": "itemswapper:v2/functional/miscellaneous",
-  "addItems": [
-    "farmersdelight:basket",
-    "farmersdelight:safety_net"
-  ]
-}

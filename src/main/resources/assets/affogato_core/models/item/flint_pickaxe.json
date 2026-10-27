@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "affogato_core:item/flint_pickaxe"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "type": "paletteModification",
-  "target": "itemswapper:v2/colors/black",
-  "addItems": [
-    "farmersdelight:black_canvas_sign",
-    "farmersdelight:black_hanging_canvas_sign"
-  ]
-}

@@ -1,7 +1,0 @@
-{
-  "type": "paletteModification",
-  "target": "itemswapper:v2/wood/bamboo",
-  "addItems": [
-    "farmersdelight:bamboo_cabinet"
-  ]
-}

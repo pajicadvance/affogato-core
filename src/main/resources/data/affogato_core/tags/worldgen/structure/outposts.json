@@ -1,9 +1,0 @@
-{
-  "values": [
-    "minecraft:pillager_outpost",
-    {
-      "id": "#repurposed_structures:collections/outposts",
-      "required": false
-    }
-  ]
-}

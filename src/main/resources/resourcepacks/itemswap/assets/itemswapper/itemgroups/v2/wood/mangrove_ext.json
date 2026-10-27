@@ -1,7 +1,0 @@
-{
-  "type": "paletteModification",
-  "target": "itemswapper:v2/wood/mangrove",
-  "addItems": [
-    "farmersdelight:mangrove_cabinet"
-  ]
-}
