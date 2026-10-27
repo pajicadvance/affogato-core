@@ -115,9 +115,9 @@ public class ModConfig extends Config {
         public ValidatedInt ancientDebrisMinAmount = new ValidatedInt(0);
         public ValidatedBoolean removeAncientDebrisHeightLimit = new ValidatedBoolean(false);
         public ValidatedBoolean addRandomChestsToMansions = new ValidatedBoolean(false);
-        public ValidatedFloat mansionRandomChestChance = new ValidatedFloat(0.008F, 1.0F, 0F, ValidatedNumber.WidgetType.TEXTBOX);
+        public ValidatedFloat mansionRandomChestChance = new ValidatedFloat(0.0039F, 1.0F, 0F, ValidatedNumber.WidgetType.TEXTBOX);
         public ValidatedBoolean addRandomChestsToMonuments = new ValidatedBoolean(false);
-        public ValidatedFloat monumentRandomChestChance = new ValidatedFloat(0.004F, 1.0F, 0F, ValidatedNumber.WidgetType.TEXTBOX);
+        public ValidatedFloat monumentRandomChestChance = new ValidatedFloat(0.0025F, 1.0F, 0F, ValidatedNumber.WidgetType.TEXTBOX);
     }
 
     public static class Experience extends ConfigSection {

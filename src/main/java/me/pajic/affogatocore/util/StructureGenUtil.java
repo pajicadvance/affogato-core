@@ -15,41 +15,41 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 public class StructureGenUtil {
 
-    private static final Set<Direction> DIRECTIONS = Set.of(Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST);
-
     public static void placeChestsAtRandomLocations(
-            BoundingBox boundingBox,
+            BoundingBox chunkBoundingBox,
+            BoundingBox structureBoundingBox,
             WorldGenLevel worldGenLevel,
             RandomSource randomSource,
             BiPredicate<BlockState, BlockPos> predicateOn,
             Predicate<BlockState> predicateAt,
             float chance,
-            ResourceKey<LootTable> lootTable,
-            @Nullable Integer minYOverride
+            ResourceKey<LootTable> lootTable
     ) {
-        int minY = minYOverride == null ? boundingBox.minY() : minYOverride;
-        for (int x = boundingBox.minX(); x < boundingBox.maxX(); x++) {
-            for (int y = minY; y < boundingBox.maxY(); y++) {
-                for (int z = boundingBox.minZ(); z < boundingBox.maxZ(); z++) {
-                    BlockPos pos = new BlockPos(x, y, z);
-                    BlockState state = worldGenLevel.getBlockState(pos);
-                    if (predicateOn.test(state, pos)) {
-                        if (!worldGenLevel.canSeeSkyFromBelowWater(pos) && checkAbove(pos, worldGenLevel)) {
-                            BlockPos pos1 = pos.above();
-                            BlockState state1 = worldGenLevel.getBlockState(pos1);
-                            if (predicateAt.test(state1)) {
-                                Direction dir = checkSides(pos1, worldGenLevel, predicateAt);
-                                if (dir != null && randomSource.nextFloat() < chance) {
-                                    createChest(worldGenLevel, boundingBox, randomSource, pos1, dir, lootTable);
-                                }
+        if (!chunkBoundingBox.intersects(structureBoundingBox)) return;
+        int minX = Math.max(chunkBoundingBox.minX(), structureBoundingBox.minX());
+        int maxX = Math.min(chunkBoundingBox.maxX(), structureBoundingBox.maxX());
+        int minY = Math.max(chunkBoundingBox.minY(), structureBoundingBox.minY());
+        int maxY = Math.min(chunkBoundingBox.maxY(), structureBoundingBox.maxY());
+        int minZ = Math.max(chunkBoundingBox.minZ(), structureBoundingBox.minZ());
+        int maxZ = Math.min(chunkBoundingBox.maxZ(), structureBoundingBox.maxZ());
+        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+        for (int x = minX; x <= maxX; x++) {
+            for (int y = minY; y < maxY; y++) {
+                for (int z = minZ; z <= maxZ; z++) {
+                    pos.set(x, y, z);
+                    if (predicateOn.test(worldGenLevel.getBlockState(pos), pos)) {
+                        BlockPos pos1 = pos.above();
+                        if (predicateAt.test(worldGenLevel.getBlockState(pos1)) && isEnclosed(pos1, worldGenLevel, structureBoundingBox, predicateAt)) {
+                            Direction dir = checkSides(pos1, worldGenLevel, predicateAt);
+                            if (dir != null && randomSource.nextFloat() < chance) {
+                                createChest(worldGenLevel, chunkBoundingBox, randomSource, pos1, dir, lootTable);
                             }
                         }
                     }
@@ -58,24 +58,23 @@ public class StructureGenUtil {
         }
     }
 
-    private static boolean checkAbove(BlockPos pos, WorldGenLevel level) {
-        int x = pos.getX();
-        int z = pos.getZ();
-        for (int y = pos.getY(); y < level.getHeight(); y++) {
-            BlockPos pos1 = new BlockPos(x, y, z);
+    private static boolean isEnclosed(BlockPos pos, WorldGenLevel level, BoundingBox structureBoundingBox, Predicate<BlockState> predicateAt) {
+        BlockPos.MutableBlockPos pos1 = pos.mutable().move(Direction.UP);
+        while (structureBoundingBox.isInside(pos1)) {
             BlockState state = level.getBlockState(pos1);
-            if (state.isFaceSturdy(level, pos1, Direction.DOWN)) return true;
+            if (!predicateAt.test(state) && state.isFaceSturdy(level, pos1, Direction.DOWN)) return true;
+            pos1.move(Direction.UP);
         }
         return false;
     }
 
     @Nullable
     private static Direction checkSides(BlockPos pos, WorldGenLevel level, Predicate<BlockState> predicate) {
-        Map<Direction, Boolean> states = new HashMap<>();
-        for (Direction dir : DIRECTIONS) states.put(dir, predicate.test(level.getBlockState(pos.relative(dir))));
+        Map<Direction, Boolean> states = new EnumMap<>(Direction.class);
+        for (Direction dir : Direction.Plane.HORIZONTAL) states.put(dir, predicate.test(level.getBlockState(pos.relative(dir))));
         if (states.containsValue(false)) {
-            for (Direction dir : DIRECTIONS) if (states.get(dir) && !states.get(dir.getOpposite())) return dir;
-            for (Direction dir : DIRECTIONS) if (states.get(dir)) return dir;
+            for (Direction dir : Direction.Plane.HORIZONTAL) if (states.get(dir) && !states.get(dir.getOpposite())) return dir;
+            for (Direction dir : Direction.Plane.HORIZONTAL) if (states.get(dir)) return dir;
         }
         return null;
     }

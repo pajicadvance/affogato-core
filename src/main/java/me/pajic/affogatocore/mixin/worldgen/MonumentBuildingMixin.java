@@ -15,6 +15,7 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.structures.OceanMonumentPieces;
 import org.spongepowered.asm.mixin.Mixin;
 
@@ -36,13 +37,13 @@ public class MonumentBuildingMixin {
         if (AffogatoCore.CONFIG.worldgen.addRandomChestsToMonuments.get()) {
             StructureGenUtil.placeChestsAtRandomLocations(
                     chunkBB,
+                    ((StructurePiece) (Object) this).getBoundingBox(),
                     level,
                     random,
                     (state, _) -> state.is(Blocks.PRISMARINE) || state.is(Blocks.PRISMARINE_BRICKS),
                     state -> state.is(BlockTags.AIR) || state.is(Blocks.WATER),
                     AffogatoCore.CONFIG.worldgen.monumentRandomChestChance.get(),
-                    ResourceKey.create(Registries.LOOT_TABLE, AffogatoCore.id("chests/ocean_monument")),
-                    null
+                    ResourceKey.create(Registries.LOOT_TABLE, AffogatoCore.id("chests/ocean_monument"))
             );
         }
     }

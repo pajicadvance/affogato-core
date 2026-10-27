@@ -36,13 +36,13 @@ public class WoodlandMansionStructureMixin {
         if (AffogatoCore.CONFIG.worldgen.addRandomChestsToMansions.get()) {
             StructureGenUtil.placeChestsAtRandomLocations(
                     chunkBB,
+                    pieces.calculateBoundingBox(),
                     level,
                     random,
                     (state, _) -> state.is(Blocks.BIRCH_PLANKS) || state.is(Blocks.OAK_PLANKS) || state.is(Blocks.BOOKSHELF),
                     state -> state.is(BlockTags.AIR),
                     AffogatoCore.CONFIG.worldgen.mansionRandomChestChance.get(),
-                    ResourceKey.create(Registries.LOOT_TABLE, AffogatoCore.id("chests/woodland_mansion")),
-                    62
+                    ResourceKey.create(Registries.LOOT_TABLE, AffogatoCore.id("chests/woodland_mansion"))
             );
         }
     }

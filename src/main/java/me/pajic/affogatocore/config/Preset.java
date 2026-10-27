@@ -131,9 +131,9 @@ public enum Preset {
                 config.worldgen.ancientDebrisMinAmount.validateAndSet(3);
                 config.worldgen.removeAncientDebrisHeightLimit.validateAndSet(true);
                 config.worldgen.addRandomChestsToMansions.validateAndSet(true);
-                config.worldgen.mansionRandomChestChance.validateAndSet(0.008F);
+                config.worldgen.mansionRandomChestChance.validateAndSet(0.0039F);
                 config.worldgen.addRandomChestsToMonuments.validateAndSet(true);
-                config.worldgen.monumentRandomChestChance.validateAndSet(0.004F);
+                config.worldgen.monumentRandomChestChance.validateAndSet(0.0025F);
 
                 // Experience
                 config.experience.recipeXpSwapByResult.validateAndSet(Map.of(
