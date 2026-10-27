@@ -1,0 +1,11 @@
+{
+  "values": [
+    "minecraft:in_fire",
+    "minecraft:on_fire",
+    "minecraft:in_wall",
+    "minecraft:wither",
+    "minecraft:freeze",
+    "minecraft:starve",
+    "minecraft:magic"
+  ]
+}

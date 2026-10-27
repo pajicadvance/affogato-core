@@ -1,6 +1,6 @@
 plugins {
-    id 'net.fabricmc.fabric-loom' version '1.16-SNAPSHOT'
-    id "me.modmuss50.mod-publish-plugin" version "0.8.4"
+    id 'net.fabricmc.fabric-loom' version '1.18-SNAPSHOT'
+    id 'me.modmuss50.mod-publish-plugin' version '2.2.1'
 }
 
 version = project.mod_version
@@ -11,73 +11,67 @@ base {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/affogato_core.accesswidener")
+    accessWidenerPath = file("src/main/resources/affogatocore.classtweaker")
+
+    decompilerOptions.named("vineflower") {
+        options.put("mark-corresponding-synthetics", "1")
+    }
+
+    runConfigs.configureEach {
+        preferGradleTask = true
+        generateRunConfig = true
+    }
 }
 
 repositories {
-    maven { url = "https://maven.parchmentmc.org" }
-    maven { url = "https://maven.terraformersmc.com/" }
-    maven { url = "https://maven.fzzyhmstrs.me/" }
-    maven { url = "https://jitpack.io" }
-    maven { url = "https://maven.blamejared.com/" }
-    maven { url = "https://maven.cassian.cc" }
-    maven { url = "https://maven.caffeinemc.net/releases" }
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Modrinth"
-                url = "https://api.modrinth.com/maven"
-            }
-        }
-        filter {
-            includeGroup "maven.modrinth"
-        }
-    }
+    maven {url = "https://maven.terraformersmc.com/"}
+    maven {url = "https://maven.fzzyhmstrs.me/"}
+    maven {url = "https://maven.caffeinemc.net/releases"}
+    maven {url = "https://api.modrinth.com/maven"}
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    implementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-    implementation "me.fzzyhmstrs:fzzy_config:${project.fzzy_version}"
-    include(implementation("com.moulberry:mixinconstraints:${project.mixinconstraints_version}"))
-    implementation(include("com.github.ramixin:mixson-fabric:${project.mixson_version}")) {
-        exclude group: "net.fabricmc.fabric-api", module: "fabric-api"
-    }
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api}"
 
-    compileOnlyApi "net.caffeinemc:sodium-fabric-api:${project.sodium_version}"
-    compileOnly "maven.modrinth:iris:1.10.9+26.1-fabric"
-    compileOnly "maven.modrinth:farmers-delight-refabricated:26.1-3.5.1"
-    compileOnly "maven.modrinth:appleskin:3.0.9+mc26.1"
-    compileOnly "maven.modrinth:wilder-wild:4.2.8-mc26.1"
-    compileOnly "maven.modrinth:trailier-tales:1.2.5-mc26.1"
-    compileOnly "maven.modrinth:better-block-entities:1.3.2+mc26.1.2"
-    compileOnly "maven.modrinth:reliable-gliders:1.3.1-26.1.2-fabric"
-    compileOnly "maven.modrinth:reusable-vault-blocks:1.0.0-fabric,26.1"
+    implementation("maven.modrinth:mixson:${project.mixson}")
+    implementation("com.moulberry:mixinconstraints:${project.mixinconstraints}")
+    include("com.moulberry:mixinconstraints:${project.mixinconstraints}")
 
-    runtimeOnly "net.caffeinemc:sodium-fabric:${project.sodium_version}"
+    implementation("com.terraformersmc:modmenu:${project.modmenu}")
+    implementation("me.fzzyhmstrs:fzzy_config:${project.fzzy_config}")
+    compileOnlyApi("net.caffeinemc:sodium-fabric-api:${project.sodium}")
+    runtimeOnly("net.caffeinemc:sodium-fabric:${project.sodium}")
+    compileOnly("maven.modrinth:iris:${project.iris}")
+    compileOnly("maven.modrinth:farmers-delight-refabricated:${project.fdrf}")
+    compileOnly("maven.modrinth:penchant:${project.penchant}")
+    compileOnly("maven.modrinth:appleskin:${project.appleskin}")
+    compileOnly("maven.modrinth:universal_ores:${project.universal_ores}")
 }
 
 processResources {
-    inputs.property "version", project.version
-    inputs.property "minecraft_version", project.minecraft_version
-    inputs.property "loader_version", project.loader_version
-    filteringCharset "UTF-8"
+    def version = project.version
+    def minecraft_version = project.minecraft_version
+    def loader_version = project.loader_version
+
+    inputs.property "version", version
+    inputs.property "minecraft_version", minecraft_version
+    inputs.property "loader_version", loader_version
+    filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
-        expand "version": project.version,
-                "minecraft_version": project.minecraft_version,
-                "loader_version": project.loader_version
+        expand "version": version,
+                "minecraft_version": minecraft_version,
+                "loader_version": loader_version
     }
 }
 
 def targetJavaVersion = 25
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
-    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
-        it.options.release.set(targetJavaVersion)
-    }
+    it.options.release.set(targetJavaVersion)
 }
 
 java {
@@ -90,24 +84,24 @@ java {
 
 jar {
     from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}" }
+        rename { "${it}_${project.archives_base_name}" }
     }
 }
 
 publishMods {
     file = jar.archiveFile
-    changelog = file(getRootDir().path + "/CHANGELOG.md").text
+    additionalFiles.from(sourcesJar.archiveFile)
+    changelog = file("CHANGELOG.md").getText()
     type = STABLE
     modLoaders.add("fabric")
-    displayName = project.mod_version + " for " + project.minecraft_version
+    displayName = "${project.mod_version}"
 
     modrinth {
-        accessToken = providers.environmentVariable("MR_KEY")
         projectId = "Q8yzjHI3"
-        minecraftVersions.add(project.minecraft_version)
-        minecraftVersions.add("26.1.1")
-        minecraftVersions.add("26.1")
-        requires("fabric-api", "fzzy-config")
+        accessToken = providers.environmentVariable("MR_KEY")
+        minecraftVersions.add("26.3")
+        environment = CLIENT_AND_SERVER
+        requires("fabric-api", "fzzy-config", "mixson")
         optional("modmenu")
     }
 }

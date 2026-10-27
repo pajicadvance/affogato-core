@@ -1,0 +1,16 @@
+{
+  "values": [
+    "affogatocore:wandering_trader/crop_cactus",
+    "affogatocore:wandering_trader/crop_carrot",
+    "affogatocore:wandering_trader/crop_cocoa_beans",
+    "affogatocore:wandering_trader/crop_potato",
+    {
+      "id": "affogatocore:wandering_trader/crop_onion",
+      "required": false
+    },
+    {
+      "id": "affogatocore:wandering_trader/crop_rice",
+      "required": false
+    }
+  ]
+}

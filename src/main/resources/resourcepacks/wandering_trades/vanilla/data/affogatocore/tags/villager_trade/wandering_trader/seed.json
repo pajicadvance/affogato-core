@@ -1,0 +1,16 @@
+{
+  "values": [
+    "affogatocore:wandering_trader/seed_beetroot",
+    "affogatocore:wandering_trader/seed_melon",
+    "affogatocore:wandering_trader/seed_pumpkin",
+    "affogatocore:wandering_trader/seed_wheat",
+    {
+      "id": "affogatocore:wandering_trader/seed_cabbage",
+      "required": false
+    },
+    {
+      "id": "affogatocore:wandering_trader/seed_tomato",
+      "required": false
+    }
+  ]
+}

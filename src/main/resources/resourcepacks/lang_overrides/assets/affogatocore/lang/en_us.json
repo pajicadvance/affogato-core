@@ -1,0 +1,11 @@
+{
+  "block.minecraft.stonecutter": "Blockcutter",
+  "container.stonecutter": "Blockcutter",
+  "stat.minecraft.interact_with_stonecutter": "Interactions with Blockcutter",
+  "subtitles.ui.stonecutter.take_result": "Blockcutter used",
+  "block.minecraft.chain": "Iron Chain",
+  "block.minecraft.lantern": "Iron Lantern",
+  "lore.minecraft.lantern": "A block that emits more light than a torch. It can be hung from the ceiling, hung on a wall, or placed on the ground.",
+  "lore.minecraft.stonecutter": "A workstation used to craft building blocks. The job site of Masons.",
+  "lore.minecraft.compass": "An item that points to the world spawn point. Can be attached to a lodestone to point to it instead."
+}

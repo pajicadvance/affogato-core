@@ -1,0 +1,5 @@
+{
+  "amount": 1.0,
+  "random_sequence": "affogatocore:trade_set/wandering_trader/xp_bottle",
+  "trades": "#affogatocore:wandering_trader/xp_bottle"
+}

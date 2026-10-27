@@ -1,0 +1,46 @@
+{
+  "biome.nullscape.crystal_peaks": "Crystal Peaks",
+  "biome.nullscape.shadowlands": "Shadowlands",
+  "biome.nullscape.void_barrens": "Void Barrens",
+
+  "config.affogatocore.settings": "Settings",
+  "config.affogatocore.shaderPreset": "Shader preset",
+  "config.affogatocore.shaderPreset.tooltip": "Applies a shader preset preconfigured by the modpack.",
+  "config.affogatocore.shaderOff": "Off",
+  "config.affogatocore.shaderPresetUnavailable.tooltip": "No shader presets found.",
+  "config.affogatocore.shaderPreset.potato": "Potato",
+  "config.affogatocore.shaderPreset.very_low": "Very Low",
+  "config.affogatocore.shaderPreset.low": "Low",
+  "config.affogatocore.shaderPreset.medium": "Medium",
+  "config.affogatocore.shaderPreset.high": "High",
+  "config.affogatocore.framePacingFix": "Frame pacing fix",
+  "config.affogatocore.framePacingFix.tooltip": "Frame pacing fix",
+
+  "advancements.story.cutting_edge.title": "Embracing the Cutting Edge",
+  "advancements.story.cutting_edge.description": "Harvest Flint from Gravel and Sticks from Leaves and make your first tool with an Axe Head",
+  "advancements.story.copper_ingot.title": "Acquire Software",
+  "advancements.story.copper_ingot.description": "Smelt a Copper Ingot",
+
+  "item.affogatocore.flint_pickaxe": "Flint Pickaxe",
+  "item.affogatocore.flint_shovel": "Flint Shovel",
+  "item.affogatocore.flint_axe": "Flint Axe",
+  "item.affogatocore.flint_hoe": "Flint Hoe",
+  "item.affogatocore.flint_sword": "Flint Sword",
+  "item.affogatocore.flint_spear": "Flint Spear",
+  "item.affogatocore.flint_axe_head": "Flint Axe Head",
+
+  "tag.item.affogatocore.flint_tool_materials": "Flint Tool Materials",
+  "tag.item.farmersdelight.drinks": "Drinks",
+  "tag.item.farmersdelight.feasts": "Feasts",
+  "tag.item.farmersdelight.meals": "Meals",
+  "tag.item.sereneseasons.spring_crops": "Spring Crops",
+  "tag.item.sereneseasons.summer_crops": "Summer Crops",
+  "tag.item.sereneseasons.autumn_crops": "Autumn Crops",
+  "tag.item.sereneseasons.winter_crops": "Winter Crops",
+
+  "tutorial.affogatocore.get_sticks.title": "Get some sticks",
+  "tutorial.affogatocore.get_sticks.description": "Punch tree leaves to collect sticks",
+  "tutorial.affogatocore.get_flint.title": "Get some flint",
+  "tutorial.affogatocore.get_flint.description": "Punch gravel to collect flint",
+  "tutorial.affogatocore.craft_flint_axe.title": "Craft a flint axe"
+}

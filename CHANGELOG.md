@@ -1,1 +1,1 @@
-- Added options for modifying the default vault wait times from Reusable Vault Blocks.
+- Fixed feature cycle error with Wilder Clifftree.

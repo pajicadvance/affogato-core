@@ -1,0 +1,219 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 3,
+              "min": 1
+            }
+          },
+          "name": "minecraft:diamond",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 4,
+              "min": 2
+            }
+          },
+          "name": "minecraft:gold_ingot",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 4,
+              "min": 2
+            }
+          },
+          "name": "minecraft:iron_ingot",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 7,
+              "min": 4
+            }
+          },
+          "name": "minecraft:resin_clump",
+          "weight": 12
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 8,
+        "min": 5
+      }
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": 1
+          },
+          "name": "minecraft:totem_of_undying",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": 1
+          },
+          "name": "minecraft:vex_armor_trim_smithing_template",
+          "weight": 1
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": 1
+          },
+          "name": "minecraft:golden_apple",
+          "weight": 19
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": 1
+          },
+          "name": "minecraft:enchanted_golden_apple",
+          "weight": 1
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 5
+        }
+      ],
+      "modifier": {
+        "type": "minecraft:set_potion",
+        "id": "minecraft:invisibility"
+      },
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 2,
+        "min": 0
+      }
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "weight": 16,
+          "modifier": {
+            "type": "minecraft:enchant_randomly",
+            "options": "#minecraft:on_random_loot"
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_sword",
+          "weight": 2,
+          "modifier": {
+            "type": "minecraft:set_enchantments",
+            "enchantments": {
+              "minecraft:sharpness": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 3
+              },
+              "minecraft:sweeping_edge": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_axe",
+          "weight": 2,
+          "modifier": {
+            "type": "minecraft:set_enchantments",
+            "enchantments": {
+              "minecraft:sharpness": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 3
+              },
+              "minecraft:efficiency": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 3
+              }
+            }
+          }
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:goat_horn",
+          "weight": 1
+        }
+      ],
+      "modifier": {
+        "type": "minecraft:set_instrument",
+        "options": "#minecraft:screaming_goat_horns"
+      },
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 1,
+        "min": 0
+      }
+    }
+  ],
+  "random_sequence": "affogatocore:chests/woodland_mansion"
+}

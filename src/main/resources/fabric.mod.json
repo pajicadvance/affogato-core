@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "affogato_core",
+  "id": "affogatocore",
   "version": "${version}",
   "name": "Affogato Core",
-  "description": "Core mod for my modpack providing utilities, patches and tweaks",
+  "description": "Core mod providing modpack utilities and custom features",
   "authors": ["pajic"],
   "contact": {},
   "license": "MIT",
@@ -11,23 +11,22 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "me.pajic.affogato_core.ClientMain"
+      "me.pajic.affogatocore.AffogatoCoreClient"
     ],
     "main": [
-      "me.pajic.affogato_core.Main"
+      "me.pajic.affogatocore.AffogatoCore"
     ],
     "sodium:config_api_user": [
-      "me.pajic.affogato_core.config.ModSodiumConfig"
+      "me.pajic.affogatocore.config.ModSodiumConfig"
     ]
   },
   "mixins": [
-    "affogato_core.mixins.json"
+    "affogatocore.mixins.json"
   ],
-  "accessWidener": "affogato_core.accesswidener",
+  "accessWidener": "affogatocore.classtweaker",
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric-api": "*",
-    "minecraft": ">=${minecraft_version}",
-    "fzzy_config": "*"
+    "minecraft": "~${minecraft_version}"
   }
 }
