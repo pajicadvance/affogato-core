@@ -1,7 +1,7 @@
 package me.pajic.affogatocore.mixin.gameplay;
 
-import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import com.llamalad7.mixinextras.sugar.Local;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import me.pajic.affogatocore.AffogatoCore;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
@@ -9,7 +9,6 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntPr
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.Set;
 
@@ -24,17 +23,11 @@ public class ItemPropertiesMixin {
             ContextIntProviders.COOKING_TIME_WOOL_SLABS
     );
 
-    @ModifyReturnValue(
-            method = "cookingFuel",
-            at = @At("RETURN")
-    )
-    private Item.Properties removeFuels(
-            Item.Properties original,
-            @Local(argsOnly = true, name = "burnTime") ResourceKey<ContextIntProvider> burnTime
-    ) {
+    @WrapMethod(method = "cookingFuel")
+    private Item.Properties removeFuels(ResourceKey<ContextIntProvider> burnTime, Operation<Item.Properties> original) {
         if (AffogatoCore.CONFIG.packs.antiFarmPack.get() && DISALLOWED_FUELS.stream().anyMatch(
                 key -> key.identifier().equals(burnTime.identifier())
         )) return (Item.Properties) (Object) this;
-        return original;
+        return original.call(burnTime);
     }
 }

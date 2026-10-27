@@ -18,6 +18,6 @@ public class FoodDataMixin {
             )
     )
     private boolean noRapidHealing(boolean original) {
-        return !AffogatoCore.CONFIG.misc.noRapidHealing.get();
+        return !AffogatoCore.CONFIG.misc.noRapidHealing.get() && original;
     }
 }

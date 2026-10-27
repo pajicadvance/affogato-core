@@ -22,7 +22,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -44,17 +46,20 @@ public class ShaderPresetSetup {
         File shaderPresetsDir = SHADER_PRESETS_DIR.toFile();
         List<ObjectObjectImmutablePair<String, String>> savedHash = new ArrayList<>();
         if (shaderDir.exists() && shaderPresetsDir.exists() && shaderDir.isDirectory() && shaderPresetsDir.isDirectory()) {
-            // check if the preset files are correctly named and add them
+            // check if the preset files are correctly named and add them in index order
+            Map<Integer, String> sortedPresets = new TreeMap<>();
             try (Stream<Path> fileStream = Files.walk(SHADER_PRESETS_DIR, 1)) {
                 fileStream.filter(path -> !path.toFile().getName().equals("affogato_presets"))
                         .map(path -> path.toFile().getName().split("_", 2))
                         .forEach(split -> {
                     try {
-                        presets.add(Integer.parseInt(split[0]), split[1].split("\\.")[0]);
+                        if (split.length < 2) throw new NumberFormatException("Missing index separator");
+                        sortedPresets.put(Integer.parseInt(split[0]), split[1].split("\\.")[0]);
                     } catch (NumberFormatException e) {
                         AffogatoCoreClient.LOGGER.error("Invalid preset file name format, skipping", e);
                     }
                 });
+                presets.addAll(sortedPresets.values());
             } catch (IOException e) {
                 AffogatoCoreClient.LOGGER.error("Can't access file, did not create shader presets", e);
             }

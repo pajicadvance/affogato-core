@@ -49,68 +49,72 @@ public class LootTableEvents {
                 "Distribute curse enchantments to desert pyramid chests",
                 "minecraft:loot_table/chests/desert_pyramid",
                 context -> {
-                    JsonElement pool = JsonParser.parseString("""
-                    {
-                      "rolls": 1,
-                      "entries": [
+                    if (AffogatoCore.CONFIG.loot.cursesOnlyInDesertPyramids.get()) {
+                        JsonElement pool = JsonParser.parseString("""
                         {
-                          "type": "minecraft:item",
-                          "name": "minecraft:book",
-                          "modifier": [
+                          "rolls": 1,
+                          "entries": [
                             {
-                              "type": "minecraft:enchant_randomly",
-                              "options": "#minecraft:curse"
+                              "type": "minecraft:item",
+                              "name": "minecraft:book",
+                              "modifier": [
+                                {
+                                  "type": "minecraft:enchant_randomly",
+                                  "options": "#minecraft:curse"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "minecraft:empty"
                             }
                           ]
-                        },
-                        {
-                          "type": "minecraft:empty"
                         }
-                      ]
+                        """).deepCopy();
+                        double c = AffogatoCore.CONFIG.loot.curseEnchantedBookChance.get() * 100;
+                        pool.getAsJsonObject()
+                                .getAsJsonArray("entries").get(0).getAsJsonObject()
+                                .addProperty("weight", c);
+                        pool.getAsJsonObject()
+                                .getAsJsonArray("entries").get(1).getAsJsonObject()
+                                .addProperty("weight", 100 - c);
+                        context.getFile().getAsJsonObject().getAsJsonArray("pools").add(pool);
                     }
-                    """).deepCopy();
-                    double c = AffogatoCore.CONFIG.loot.curseEnchantedBookChance.get() * 100;
-                    pool.getAsJsonObject()
-                            .getAsJsonArray("entries").get(0).getAsJsonObject()
-                            .addProperty("weight", c);
-                    pool.getAsJsonObject()
-                            .getAsJsonArray("entries").get(1).getAsJsonObject()
-                            .addProperty("weight", 100 - c);
-                    context.getFile().getAsJsonObject().getAsJsonArray("pools").add(pool);
                 }
         );
         MixsonHelper.registerMultiJson(
                 "Distribute frost walker enchantment to igloo and ice box chests",
                 Set.of("minecraft:loot_table/chests/igloo_chest", "minecraft:loot_table/chests/ancient_city_ice_box"),
                 context -> {
-                    JsonElement pool = JsonParser.parseString("""
-                    {
-                      "rolls": 1,
-                      "entries": [
+                    if (AffogatoCore.CONFIG.loot.frostWalkerOnlyInIgloosAndIceBox.get()) {
+                        JsonElement pool = JsonParser.parseString("""
                         {
-                          "type": "minecraft:item",
-                          "name": "minecraft:book",
-                          "modifier": [
+                          "rolls": 1,
+                          "entries": [
                             {
-                              "type": "minecraft:enchant_randomly",
-                              "options": "minecraft:frost_walker"
+                              "type": "minecraft:item",
+                              "name": "minecraft:book",
+                              "modifier": [
+                                {
+                                  "type": "minecraft:enchant_randomly",
+                                  "options": "minecraft:frost_walker"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "minecraft:empty"
                             }
                           ]
-                        },
-                        {
-                          "type": "minecraft:empty"
                         }
-                      ]
+                        """).deepCopy();
+                        double c = (context.getIndex().id().getPath().contains("igloo_chest") ?
+                                AffogatoCore.CONFIG.loot.frostWalkerIglooChance.get() :
+                                AffogatoCore.CONFIG.loot.frostWalkerIceBoxChance.get()) * 100;
+                        pool.getAsJsonObject().getAsJsonArray("entries").get(0).getAsJsonObject()
+                                .addProperty("weight", c);
+                        pool.getAsJsonObject().getAsJsonArray("entries").get(1).getAsJsonObject()
+                                .addProperty("weight", 100 - c);
+                        context.getFile().getAsJsonObject().getAsJsonArray("pools").add(pool);
                     }
-                    """).deepCopy();
-                    double c = (context.getIndex().id().getPath().contains("igloo_chest") ?
-                            AffogatoCore.CONFIG.loot.frostWalkerIglooChance.get() :
-                            AffogatoCore.CONFIG.loot.frostWalkerIceBoxChance.get()) * 100;
-                    pool.getAsJsonObject().getAsJsonArray("entries").get(0).getAsJsonObject()
-                            .addProperty("weight", c);
-                    pool.getAsJsonObject().getAsJsonArray("entries").get(1).getAsJsonObject()
-                            .addProperty("weight", 100 - c);
-                    context.getFile().getAsJsonObject().getAsJsonArray("pools").add(pool);
                 }
         );
         MixsonHelper.registerSingleJson(

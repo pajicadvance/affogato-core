@@ -64,7 +64,7 @@ public class FindTreeTutorialStepInstanceMixin {
             )
     )
     private TutorialToast.Icons modifyTutorialIcon(TutorialToast.Icons original) {
-        return AffogatoCore.CONFIG.packs.earlyGameExtension.get() ? TutorialToast.Icons.valueOf("SVO_CORE_LEAVES") : original;
+        return AffogatoCore.CONFIG.packs.earlyGameExtension.get() ? TutorialToast.Icons.valueOf("AFFOGATOCORE_LEAVES") : original;
     }
 
     @ModifyExpressionValue(

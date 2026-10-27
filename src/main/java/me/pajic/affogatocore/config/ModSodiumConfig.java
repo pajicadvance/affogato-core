@@ -55,7 +55,8 @@ public class ModSodiumConfig implements ConfigEntryPoint {
     }
 
     private static void saveShaderPreset(int preset) {
-        AffogatoCoreClient.CONFIG.shaderPreset.validateAndSet(ShaderPresetSetup.presets.get(preset));
+        if (preset == -1) AffogatoCoreClient.CONFIG.shaderPreset.accept("");
+        else AffogatoCoreClient.CONFIG.shaderPreset.validateAndSet(ShaderPresetSetup.presets.get(preset));
         IrisHelper.applyPreset(preset);
     }
 }

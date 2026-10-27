@@ -21,7 +21,7 @@ public class WorldgenDataEvents {
                     if (AffogatoCore.CONFIG.worldgen.allowAncientDebrisAirExposure.get())
                         context.getFile().getAsJsonObject().addProperty("discard_chance_on_air_exposure", 0);
                     context.getFile().getAsJsonObject()
-                            .addProperty("size", context.getIndex().toString().endsWith("large") ?
+                            .addProperty("size", context.getIndex().id().getPath().endsWith("large") ?
                                     AffogatoCore.CONFIG.worldgen.ancientDebrisLargeSize.get() :
                                     AffogatoCore.CONFIG.worldgen.ancientDebrisSmallSize.get()
                             );

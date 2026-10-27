@@ -33,7 +33,9 @@ public class RecipeEvents {
                 index -> index.id().getPath().startsWith("recipe/") && !index.id().getNamespace().equals("emi"),
                 context -> {
                     String type = context.getFile().getAsJsonObject().getAsJsonPrimitive("type").getAsString();
-                    if (context.getFile().getAsJsonObject().has("experience")) {
+                    boolean xpSwapEnabled = !AffogatoCore.CONFIG.experience.recipeXpSwapByResult.get().isEmpty() ||
+                            !AffogatoCore.CONFIG.experience.recipeXpSwapByInput.get().isEmpty();
+                    if (xpSwapEnabled && context.getFile().getAsJsonObject().has("experience")) {
                         if (type.equals("minecraft:campfire_cooking") || type.equals("minecraft:smoking") || type.equals("simplekiln:kiln_smelting"))
                             context.getFile().getAsJsonObject().remove("experience");
                         if (type.equals("minecraft:smelting") || type.equals("minecraft:blasting")) {

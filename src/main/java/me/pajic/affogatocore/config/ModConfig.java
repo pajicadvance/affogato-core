@@ -16,11 +16,8 @@ import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedInt;
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedNumber;
 import me.pajic.affogatocore.AffogatoCore;
 import me.pajic.affogatocore.util.LootEntryReplacement;
-import me.pajic.affogatocore.util.ToolMaterialId;
 import me.pajic.affogatocore.util.ToolStatReplacement;
 import me.pajic.affogatocore.util.WeaponStatReplacement;
-import me.pajic.affogatocore.util.WeaponType;
-import net.minecraft.world.item.ToolMaterial;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 @Version(version = 1)
@@ -39,33 +36,8 @@ public class ModConfig extends Config {
     public Experience experience = new Experience();
     public Combat combat = new Combat();
     public ModIntegration modIntegration = new ModIntegration();
-    public ValidatedList<ToolStatReplacement> toolStats = new ValidatedAny<>(new ToolStatReplacement()).toList(
-            new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.WOOD), 80, 3.0F),
-            new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.STONE), 96, 4.0F),
-            new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), 160, 5.0F),
-            new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.IRON), 320, 7.0F),
-            new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), 80, 20.0F),
-            new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), 1280, 9.0F),
-            new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), 2560, 11.0F)
-    );
-    public ValidatedList<WeaponStatReplacement> weaponStats = new ValidatedAny<>(new WeaponStatReplacement()).toList(
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.WOOD), WeaponType.AXE, -3.4F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.STONE), WeaponType.AXE, -3.4F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.IRON), WeaponType.AXE, -3.4F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), WeaponType.AXE, -3.4F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), WeaponType.AXE, -3.4F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), WeaponType.AXE, -3.4F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.WOOD), WeaponType.HOE, -2.0F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.STONE), WeaponType.HOE, -2.0F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.IRON), WeaponType.HOE, -2.0F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), WeaponType.HOE, -2.0F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), WeaponType.HOE, -2.0F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), WeaponType.HOE, -2.0F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.SWORD, -1.6F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.PICKAXE, -2.2F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.SHOVEL, -2.5F),
-            new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.HOE, 0.0F)
-    );
+    public ValidatedList<ToolStatReplacement> toolStats = new ValidatedAny<>(new ToolStatReplacement()).toList();
+    public ValidatedList<WeaponStatReplacement> weaponStats = new ValidatedAny<>(new WeaponStatReplacement()).toList();
     public Misc misc = new Misc();
     public Debug debug = new Debug();
 

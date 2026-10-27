@@ -56,7 +56,7 @@ public class PunchTreeTutorialStepInstanceMixin {
             )
     )
     private TutorialToast.Icons modifyTutorialIcon(TutorialToast.Icons original) {
-        return AffogatoCore.CONFIG.packs.earlyGameExtension.get() ? TutorialToast.Icons.valueOf("SVO_CORE_GRAVEL") : original;
+        return AffogatoCore.CONFIG.packs.earlyGameExtension.get() ? TutorialToast.Icons.valueOf("AFFOGATOCORE_GRAVEL") : original;
     }
 
     @ModifyExpressionValue(

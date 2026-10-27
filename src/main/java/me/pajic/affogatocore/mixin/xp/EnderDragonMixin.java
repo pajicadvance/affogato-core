@@ -25,6 +25,6 @@ public class EnderDragonMixin {
             )
     )
     private boolean noXpDropOnSubsequentKills(ServerLevel level, Vec3 pos, int amount) {
-        return AffogatoCore.CONFIG.experience.noEnderDragonXpAfterFirst.get() && dragonFight != null && !dragonFight.hasPreviouslyKilledDragon();
+        return !AffogatoCore.CONFIG.experience.noEnderDragonXpAfterFirst.get() || dragonFight != null && !dragonFight.hasPreviouslyKilledDragon();
     }
 }

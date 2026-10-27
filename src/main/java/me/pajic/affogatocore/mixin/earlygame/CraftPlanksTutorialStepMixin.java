@@ -44,7 +44,7 @@ public class CraftPlanksTutorialStepMixin {
             )
     )
     private TutorialToast.Icons modifyTutorialIcon(TutorialToast.Icons original) {
-        return AffogatoCore.CONFIG.packs.earlyGameExtension.get() ? TutorialToast.Icons.valueOf("SVO_CORE_FLINT_AXE") : original;
+        return AffogatoCore.CONFIG.packs.earlyGameExtension.get() ? TutorialToast.Icons.valueOf("AFFOGATOCORE_FLINT_AXE") : original;
     }
 
     @WrapMethod(method = "hasCraftedPlanksPreviously")
