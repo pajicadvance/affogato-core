@@ -1,6 +1,7 @@
 package me.pajic.affogatocore.mixin.combat;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import me.pajic.affogatocore.AffogatoCore;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,6 +21,6 @@ public class LivingEntityMixin {
             index = 4
     )
     private float reduceProjectileShieldDamage(float original, @Local(argsOnly = true, name = "source") DamageSource source) {
-        return source.is(DamageTypeTags.IS_PROJECTILE) ? original / 3 : original;
+        return source.is(DamageTypeTags.IS_PROJECTILE) ? original / AffogatoCore.CONFIG.combat.shieldProjectileDamageDivisor.get() : original;
     }
 }

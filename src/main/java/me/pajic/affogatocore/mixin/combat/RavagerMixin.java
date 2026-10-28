@@ -1,7 +1,10 @@
 package me.pajic.affogatocore.mixin.combat;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import me.pajic.affogatocore.AffogatoCore;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Ravager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,14 +23,15 @@ public class RavagerMixin {
         return AffogatoCore.CONFIG.combat.ravagerFollowRange.get();
     }
 
-    @ModifyExpressionValue(
+    @WrapOperation(
             method = "strongKnockback",
             at = @At(
-                    value = "CONSTANT",
-                    args = "doubleValue=0.001"
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/entity/Entity;push(DDD)V"
             )
     )
-    private double modifyRoarKnockbackMaxIntensity(double constant) {
-        return 0.1;
+    private void modifyRoarKnockback(Entity entity, double xa, double ya, double za, Operation<Void> original) {
+        float mult = AffogatoCore.CONFIG.combat.ravagerRoarKnockbackMult.get();
+        original.call(entity, xa * mult, ya * mult, za * mult);
     }
 }

@@ -1,5 +1,6 @@
-package me.pajic.affogatocore.mixin.food;
+package me.pajic.affogatocore.mixin.combat;
 
+import me.pajic.affogatocore.AffogatoCore;
 import me.pajic.affogatocore.tag.ModTags;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -27,6 +28,6 @@ public abstract class PlayerMixin extends LivingEntity {
             )
     )
     private void cancelEatingOnHurt(ServerLevel level, DamageSource source, float dmg, CallbackInfo ci) {
-        if (getUseItem().has(DataComponents.FOOD) && !source.is(ModTags.NO_EAT_CANCEL)) stopUsingItem();
+        if (AffogatoCore.CONFIG.combat.eatCancel.get() && getUseItem().has(DataComponents.FOOD) && !source.is(ModTags.NO_EAT_CANCEL)) stopUsingItem();
     }
 }

@@ -68,7 +68,11 @@ public class AdvancementEvents {
         MixsonHelper.registerMultiJson(
                 "Remove Mastercutter advancements",
                 index -> index.id().toString().startsWith("global:advancement/"),
-                context -> context.markForDeletion(true)
+                context -> {
+                    if (AffogatoCore.CONFIG.modIntegration.mastercutterAdvancementRemoval.get()) {
+                        context.markForDeletion(true);
+                    }
+                }
         );
     }
 }

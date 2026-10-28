@@ -164,30 +164,34 @@ public enum Preset {
 
                 // Combat
                 config.combat.eatTimeIncrease.validateAndSet(1.6F);
+                config.combat.eatCancel.validateAndSet(true);
                 config.combat.blazeFollowRange.validateAndSet(32);
                 config.combat.illusionerFollowRange.validateAndSet(16);
                 config.combat.pillagerFollowRange.validateAndSet(24);
                 config.combat.ravagerFollowRange.validateAndSet(16);
+                config.combat.ravagerRoarKnockbackMult.validateAndSet(0.1F);
                 config.combat.zombieFollowRange.validateAndSet(16);
                 config.combat.zombieAlertOtherRange.validateAndSet(35);
                 config.combat.drownedTridentThrowDelay.validateAndSet(80);
                 config.combat.endermanAttackDelay.validateAndSet(40);
+                config.combat.shieldProjectileDamageDivisor.validateAndSet(3F);
 
                 // Mod integration
                 config.modIntegration.fdCakeSliceFoodLevel.validateAndSet(3);
                 config.modIntegration.fdCakeSliceSaturationLevel.validateAndSet(0.3F);
                 config.modIntegration.penchantXpCostMult.validateAndSet(3);
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(true);
+                config.modIntegration.mastercutterAdvancementRemoval.validateAndSet(true);
 
                 // Tool stats
                 config.toolStats.validateAndSet(List.of(
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.WOOD), 80, 3.0F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.STONE), 96, 4.0F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), 160, 5.0F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.IRON), 320, 7.0F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), 80, 20.0F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), 1280, 9.0F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), 2560, 11.0F)
+                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.WOOD), 80, 3F),
+                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.STONE), 96, 4F),
+                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), 160, 5F),
+                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.IRON), 320, 7F),
+                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), 80, 20F),
+                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), 1280, 9F),
+                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), 2560, 11F)
                 ));
 
                 // Weapon stats
@@ -198,16 +202,16 @@ public enum Preset {
                         new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), WeaponType.AXE, -3.4F),
                         new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), WeaponType.AXE, -3.4F),
                         new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), WeaponType.AXE, -3.4F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.WOOD), WeaponType.HOE, -2.0F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.STONE), WeaponType.HOE, -2.0F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.IRON), WeaponType.HOE, -2.0F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), WeaponType.HOE, -2.0F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), WeaponType.HOE, -2.0F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), WeaponType.HOE, -2.0F),
+                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.WOOD), WeaponType.HOE, -2F),
+                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.STONE), WeaponType.HOE, -2F),
+                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.IRON), WeaponType.HOE, -2F),
+                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), WeaponType.HOE, -2F),
+                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), WeaponType.HOE, -2F),
+                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), WeaponType.HOE, -2F),
                         new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.SWORD, -1.6F),
                         new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.PICKAXE, -2.2F),
                         new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.SHOVEL, -2.5F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.HOE, 0.0F)
+                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.HOE, 0F)
                 ));
 
                 // Misc
@@ -237,21 +241,21 @@ public enum Preset {
 
                 // Exhaustion values
                 config.exhaustionValues.attack.validateAndSet(0.1F);
-                config.exhaustionValues.blockAttack.validateAndSet(0.0F);
+                config.exhaustionValues.blockAttack.validateAndSet(0F);
                 config.exhaustionValues.breakBlock.validateAndSet(0.005F);
-                config.exhaustionValues.climb.validateAndSet(0.0F);
-                config.exhaustionValues.crawl.validateAndSet(0.0F);
-                config.exhaustionValues.drawRangedWeapon.validateAndSet(0.0F);
+                config.exhaustionValues.climb.validateAndSet(0F);
+                config.exhaustionValues.crawl.validateAndSet(0F);
+                config.exhaustionValues.drawRangedWeapon.validateAndSet(0F);
                 config.exhaustionValues.hungerEffectTick.validateAndSet(0.005F);
                 config.exhaustionValues.jump.validateAndSet(0.05F);
                 config.exhaustionValues.jumpSprint.validateAndSet(0.2F);
                 config.exhaustionValues.naturalHealing.validateAndSet(6.0F);
-                config.exhaustionValues.sneak.validateAndSet(0.0F);
+                config.exhaustionValues.sneak.validateAndSet(0F);
                 config.exhaustionValues.sprint.validateAndSet(0.1F);
                 config.exhaustionValues.swimFast.validateAndSet(0.01F);
                 config.exhaustionValues.swimSlow.validateAndSet(0.01F);
                 config.exhaustionValues.takeDamage.validateAndSet(0.1F);
-                config.exhaustionValues.throwWeapon.validateAndSet(0.0F);
+                config.exhaustionValues.throwWeapon.validateAndSet(0F);
 
                 // Durabilities
                 config.durabilities.helmetBase.validateAndSet(11);
@@ -278,9 +282,9 @@ public enum Preset {
                 config.loot.cursesOnlyInDesertPyramids.validateAndSet(false);
 
                 // Worldgen
-                config.worldgen.dungeonChanceMult.validateAndSet(1.0F);
-                config.worldgen.mineshaftChanceMult.validateAndSet(1.0F);
-                config.worldgen.oreSizeMult.validateAndSet(1.0F);
+                config.worldgen.dungeonChanceMult.validateAndSet(1F);
+                config.worldgen.mineshaftChanceMult.validateAndSet(1F);
+                config.worldgen.oreSizeMult.validateAndSet(1F);
                 config.worldgen.allowAncientDebrisAirExposure.validateAndSet(false);
                 config.worldgen.ancientDebrisLargeSize.validateAndSet(3);
                 config.worldgen.ancientDebrisSmallSize.validateAndSet(2);
@@ -305,21 +309,25 @@ public enum Preset {
                 config.experience.noXpFromTrading.validateAndSet(false);
 
                 // Combat
-                config.combat.eatTimeIncrease.validateAndSet(0.0F);
+                config.combat.eatTimeIncrease.validateAndSet(0F);
+                config.combat.eatCancel.validateAndSet(false);
                 config.combat.blazeFollowRange.validateAndSet(48);
                 config.combat.illusionerFollowRange.validateAndSet(32);
                 config.combat.pillagerFollowRange.validateAndSet(32);
                 config.combat.ravagerFollowRange.validateAndSet(32);
+                config.combat.ravagerRoarKnockbackMult.validateAndSet(1.0F);
                 config.combat.zombieFollowRange.validateAndSet(35);
                 config.combat.zombieAlertOtherRange.validateAndSet(35);
                 config.combat.drownedTridentThrowDelay.validateAndSet(40);
                 config.combat.endermanAttackDelay.validateAndSet(20);
+                config.combat.shieldProjectileDamageDivisor.validateAndSet(1F);
 
                 // Mod integration
                 config.modIntegration.fdCakeSliceFoodLevel.validateAndSet(2);
                 config.modIntegration.fdCakeSliceSaturationLevel.validateAndSet(0.1F);
                 config.modIntegration.penchantXpCostMult.validateAndSet(1);
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(false);
+                config.modIntegration.mastercutterAdvancementRemoval.validateAndSet(false);
 
                 // Tool & weapon stats
                 config.toolStats.validateAndSet(List.of());

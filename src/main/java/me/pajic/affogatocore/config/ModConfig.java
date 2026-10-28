@@ -144,14 +144,17 @@ public class ModConfig extends Config {
 
     public static class Combat extends ConfigSection {
         public ValidatedFloat eatTimeIncrease = new ValidatedFloat(0);
+        public ValidatedBoolean eatCancel = new ValidatedBoolean(false);
         public ValidatedInt blazeFollowRange = new ValidatedInt(48);
         public ValidatedInt illusionerFollowRange = new ValidatedInt(32);
         public ValidatedInt pillagerFollowRange = new ValidatedInt(32);
         public ValidatedInt ravagerFollowRange = new ValidatedInt(32);
+        public ValidatedFloat ravagerRoarKnockbackMult = new ValidatedFloat(0.1F);
         public ValidatedInt zombieFollowRange = new ValidatedInt(35);
         public ValidatedInt zombieAlertOtherRange = new ValidatedInt(35);
         public ValidatedInt drownedTridentThrowDelay = new ValidatedInt(40);
         public ValidatedInt endermanAttackDelay = new ValidatedInt(20);
+        public ValidatedFloat shieldProjectileDamageDivisor = new ValidatedFloat(1);
     }
 
     public static class Misc extends ConfigSection {
@@ -178,6 +181,7 @@ public class ModConfig extends Config {
         public ValidatedFloat fdCakeSliceSaturationLevel = new ValidatedFloat(0.1F);
         public ValidatedInt penchantXpCostMult = new ValidatedInt(1, 8, 1);
         public ValidatedBoolean penchantProgressOnHostileKill = new ValidatedBoolean(false);
+        public ValidatedBoolean mastercutterAdvancementRemoval = new ValidatedBoolean(false);
     }
 
     public static class Debug extends ConfigSection {
