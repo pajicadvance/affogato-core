@@ -8,6 +8,7 @@ import me.pajic.affogatocore.util.LootEntryReplacement;
 import me.pajic.affogatocore.util.ItemStatModification;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -79,7 +80,7 @@ public enum Preset {
                 config.exhaustionValues.throwWeapon.validateAndSet(0.25F);
 
                 // Loot
-                config.loot.lootEntryReplacements.validateAndSet(Map.ofEntries(
+                config.loot.lootEntryReplacements.validateAndSet(orderedMap(
                         Map.entry("minecraft:diamond_helmet", new LootEntryReplacement("minecraft:diamond", 5)),
                         Map.entry("minecraft:diamond_chestplate", new LootEntryReplacement("minecraft:diamond", 8)),
                         Map.entry("minecraft:diamond_leggings", new LootEntryReplacement("minecraft:diamond", 7)),
@@ -116,10 +117,10 @@ public enum Preset {
                         Map.entry("minecraft:copper_hoe", new LootEntryReplacement("minecraft:copper_ingot", 2)),
                         Map.entry("minecraft:copper_spear", new LootEntryReplacement("minecraft:copper_ingot", 1))
                 ));
-                config.loot.totemMap.validateAndSet(Map.of(
-                        "minecraft:jungle_temple", 0.5,
-                        "minecraft:pillager_outpost", 0.75,
-                        "minecraft:woodland_mansion", 1.0
+                config.loot.totemMap.validateAndSet(orderedMap(
+                        Map.entry("minecraft:jungle_temple", 0.5),
+                        Map.entry("minecraft:pillager_outpost", 0.75),
+                        Map.entry("minecraft:woodland_mansion", 1.0)
                 ));
                 config.loot.emeraldBlockResetsVaults.validateAndSet(true);
                 config.loot.maceEnchantmentsInOminousVaults.validateAndSet(true);
@@ -149,19 +150,19 @@ public enum Preset {
                 config.worldgen.monumentRandomChestChance.validateAndSet(0.0025F);
 
                 // Experience
-                config.experience.recipeXpSwapByResult.validateAndSet(Map.of(
-                        "minecraft:iron_ingot", 1.5,
-                        "minecraft:copper_ingot", 1.0,
-                        "minecraft:netherite_scrap", 10.0,
-                        "minecraft:iron_nugget", 1.0,
-                        "minecraft:gold_nugget", 1.0,
-                        "minecraft:copper_nugget", 1.0
+                config.experience.recipeXpSwapByResult.validateAndSet(orderedMap(
+                        Map.entry("minecraft:iron_ingot", 1.5),
+                        Map.entry("minecraft:copper_ingot", 1.0),
+                        Map.entry("minecraft:netherite_scrap", 10.0),
+                        Map.entry("minecraft:iron_nugget", 1.0),
+                        Map.entry("minecraft:gold_nugget", 1.0),
+                        Map.entry("minecraft:copper_nugget", 1.0)
                 ));
-                config.experience.recipeXpSwapByInput.validateAndSet(Map.of(
-                        "minecraft:raw_gold", 3.0,
-                        "minecraft:gold_ore", 3.0,
-                        "minecraft:deepslate_gold_ore", 3.0,
-                        "minecraft:nether_gold_ore", 0.75
+                config.experience.recipeXpSwapByInput.validateAndSet(orderedMap(
+                        Map.entry("minecraft:raw_gold", 3.0),
+                        Map.entry("minecraft:gold_ore", 3.0),
+                        Map.entry("minecraft:deepslate_gold_ore", 3.0),
+                        Map.entry("minecraft:nether_gold_ore", 0.75)
                 ));
                 config.experience.coal.validateAndSet(new ValidatedPair.Tuple<>(0, 3));
                 config.experience.netherGold.validateAndSet(new ValidatedPair.Tuple<>(0, 3));
@@ -402,5 +403,12 @@ public enum Preset {
         stats.add(ItemStatModification.durability(16 * multiplier, "minecraft:" + material + "_chestplate"));
         stats.add(ItemStatModification.durability(14 * multiplier, "minecraft:" + material + "_leggings"));
         stats.add(ItemStatModification.durability(12 * multiplier, "minecraft:" + material + "_boots"));
+    }
+
+    @SafeVarargs
+    private static <K, V> Map<K, V> orderedMap(Map.Entry<K, V>... entries) {
+        Map<K, V> map = new LinkedHashMap<>();
+        for (Map.Entry<K, V> entry : entries) map.put(entry.getKey(), entry.getValue());
+        return map;
     }
 }
