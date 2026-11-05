@@ -39,6 +39,7 @@ Features:
 - Fix ocelots being counted as monsters when spawning in jungles.
 - Prevent rerolling villager professions by breaking their workstation.
 - Adjust how often potent sulfur geysers erupt with a multiplier.
+- Adjust how often potent sulfur geyser eruption sounds and trial spawner ambient sounds play, and the distance from the player within which they play, to stop them from filling up the sound limit.
 - Suppress the log warning about world generation reading outside its write zone.
 - Night Vision Nuke: Makes night vision unobtainable in survival by removing its brewing recipes, replacing it with invisibility in loot and suspicious stew, and removing it from advancement requirements.
 - Hard Difficulty Default: Difficulty on create world screen defaults to Hard and freshly created servers default to Hard in server.properties.

@@ -172,7 +172,11 @@ public class ModConfig extends Config {
         public ValidatedBoolean moreStoneTypesInStoneCraftingRecipes = new ValidatedBoolean(false);
         public ValidatedBoolean fixOcelotSpawn = new ValidatedBoolean(false);
         public ValidatedBoolean noVillagerRerolling = new ValidatedBoolean(false);
-        public ValidatedFloat potentSulfurEruptionFrequencyMult = new ValidatedFloat(1F, 100F, 0.01F);
+        public ValidatedFloat potentSulfurEruptionFrequencyMult = new ValidatedFloat(1F, 100F, 0.01F, ValidatedNumber.WidgetType.TEXTBOX);
+        public ValidatedFloat potentSulfurGeyserSoundFrequencyMult = new ValidatedFloat(1F, 100F, 0.01F, ValidatedNumber.WidgetType.TEXTBOX);
+        public ValidatedInt potentSulfurGeyserSoundRange = new ValidatedInt(0, 256, 0, ValidatedNumber.WidgetType.TEXTBOX);
+        public ValidatedFloat trialSpawnerAmbientSoundFrequencyMult = new ValidatedFloat(1F, 100F, 0.01F, ValidatedNumber.WidgetType.TEXTBOX);
+        public ValidatedInt trialSpawnerAmbientSoundRange = new ValidatedInt(0, 256, 0, ValidatedNumber.WidgetType.TEXTBOX);
         public ValidatedBoolean suppressWorldgenReadWarning = new ValidatedBoolean(false);
     }
 

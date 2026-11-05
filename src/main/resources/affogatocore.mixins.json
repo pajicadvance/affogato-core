@@ -75,7 +75,9 @@
     "earlygame.FindTreeTutorialStepInstanceMixin",
     "earlygame.PunchTreeTutorialStepInstanceMixin",
     "earlygame.TutorialToastIconsMixin",
-    "misc.PackSelectionModelMixin"
+    "misc.PackSelectionModelMixin",
+    "misc.PotentSulfurBlockEntityClientMixin",
+    "misc.TrialSpawnerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

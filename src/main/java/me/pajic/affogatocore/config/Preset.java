@@ -215,7 +215,11 @@ public enum Preset {
                 config.misc.moreStoneTypesInStoneCraftingRecipes.validateAndSet(true);
                 config.misc.fixOcelotSpawn.validateAndSet(true);
                 config.misc.noVillagerRerolling.validateAndSet(true);
-                config.misc.potentSulfurEruptionFrequencyMult.validateAndSet(0.33F);
+                config.misc.potentSulfurEruptionFrequencyMult.validateAndSet(0.5F);
+                config.misc.potentSulfurGeyserSoundFrequencyMult.validateAndSet(0.5F);
+                config.misc.potentSulfurGeyserSoundRange.validateAndSet(32);
+                config.misc.trialSpawnerAmbientSoundFrequencyMult.validateAndSet(0.5F);
+                config.misc.trialSpawnerAmbientSoundRange.validateAndSet(16);
                 config.misc.suppressWorldgenReadWarning.validateAndSet(true);
             }
             case DISABLE_ALL -> {
@@ -329,6 +333,10 @@ public enum Preset {
                 config.misc.fixOcelotSpawn.validateAndSet(false);
                 config.misc.noVillagerRerolling.validateAndSet(false);
                 config.misc.potentSulfurEruptionFrequencyMult.validateAndSet(1F);
+                config.misc.potentSulfurGeyserSoundFrequencyMult.validateAndSet(1F);
+                config.misc.potentSulfurGeyserSoundRange.validateAndSet(0);
+                config.misc.trialSpawnerAmbientSoundFrequencyMult.validateAndSet(1F);
+                config.misc.trialSpawnerAmbientSoundRange.validateAndSet(0);
                 config.misc.suppressWorldgenReadWarning.validateAndSet(false);
             }
         }
