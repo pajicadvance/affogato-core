@@ -124,7 +124,11 @@ public enum Preset {
                 // Worldgen
                 config.worldgen.dungeonChanceMult.validateAndSet(1.3F);
                 config.worldgen.mineshaftChanceMult.validateAndSet(1.2F);
-                config.worldgen.oreSizeMult.validateAndSet(1.2F);
+                config.worldgen.oreSizeMinMult.validateAndSet(0.8F);
+                config.worldgen.oreSizeMaxMult.validateAndSet(1.2F);
+                config.worldgen.oreSizeMultMaxY.validateAndSet(192);
+                config.worldgen.oreSizeMultMidY.validateAndSet(96);
+                config.worldgen.oreSizeMultMinY.validateAndSet(0);
                 config.worldgen.allowAncientDebrisAirExposure.validateAndSet(true);
                 config.worldgen.ancientDebrisLargeSize.validateAndSet(6);
                 config.worldgen.ancientDebrisSmallSize.validateAndSet(6);
@@ -284,7 +288,11 @@ public enum Preset {
                 // Worldgen
                 config.worldgen.dungeonChanceMult.validateAndSet(1F);
                 config.worldgen.mineshaftChanceMult.validateAndSet(1F);
-                config.worldgen.oreSizeMult.validateAndSet(1F);
+                config.worldgen.oreSizeMinMult.validateAndSet(1F);
+                config.worldgen.oreSizeMaxMult.validateAndSet(1F);
+                config.worldgen.oreSizeMultMaxY.validateAndSet(192);
+                config.worldgen.oreSizeMultMidY.validateAndSet(96);
+                config.worldgen.oreSizeMultMinY.validateAndSet(0);
                 config.worldgen.allowAncientDebrisAirExposure.validateAndSet(false);
                 config.worldgen.ancientDebrisLargeSize.validateAndSet(3);
                 config.worldgen.ancientDebrisSmallSize.validateAndSet(2);

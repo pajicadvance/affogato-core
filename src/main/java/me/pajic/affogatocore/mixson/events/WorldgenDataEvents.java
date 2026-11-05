@@ -7,11 +7,7 @@ import com.google.gson.JsonParser;
 import me.pajic.affogatocore.AffogatoCore;
 import me.pajic.affogatocore.mixson.MixsonHelper;
 
-import java.util.List;
-
 public class WorldgenDataEvents {
-
-    private static final List<String> ORE = List.of("coal", "copper", "diamond", "emerald", "gold", "iron", "lapis", "nether_gold", "quartz", "redstone");
 
     public static void register() {
         MixsonHelper.registerMultiJson(
@@ -56,13 +52,6 @@ public class WorldgenDataEvents {
                     }
                 }
         );
-        ORE.forEach(ore -> MixsonHelper.registerMultiJson(
-                "Increase " + ore + " ore size",
-                index -> index.id().toString().startsWith("minecraft:worldgen/feature/ore_" + ore),
-                context -> context.getFile().getAsJsonObject().addProperty("size", Math.round(
-                        context.getFile().getAsJsonObject().getAsJsonPrimitive("size").getAsInt() * AffogatoCore.CONFIG.worldgen.oreSizeMult.get()
-                ))
-        ));
         MixsonHelper.registerMultiJson(
                 "Increase dungeon spawn rate",
                 index -> index.id().toString().startsWith("minecraft:worldgen/placed_feature/monster_room"),

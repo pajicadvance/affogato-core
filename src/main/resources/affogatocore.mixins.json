@@ -60,6 +60,7 @@
     "stats.ToolMaterialMixin",
     "trade.WanderingTraderMixin",
     "worldgen.MonumentBuildingMixin",
+    "worldgen.OreFeatureMixin",
     "worldgen.ScatteredOreFeatureMixin",
     "worldgen.WoodlandMansionStructureMixin",
     "worldgen.WorldGenRegionMixin",

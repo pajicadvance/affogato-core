@@ -108,7 +108,11 @@ public class ModConfig extends Config {
     public static class Worldgen extends ConfigSection {
         public ValidatedFloat dungeonChanceMult = new ValidatedFloat(1);
         public ValidatedFloat mineshaftChanceMult = new ValidatedFloat(1);
-        public ValidatedFloat oreSizeMult = new ValidatedFloat(1);
+        public ValidatedFloat oreSizeMinMult = new ValidatedFloat(1);
+        public ValidatedFloat oreSizeMaxMult = new ValidatedFloat(1);
+        public ValidatedInt oreSizeMultMaxY = new ValidatedInt(192);
+        public ValidatedInt oreSizeMultMidY = new ValidatedInt(96);
+        public ValidatedInt oreSizeMultMinY = new ValidatedInt(0);
         public ValidatedBoolean allowAncientDebrisAirExposure = new ValidatedBoolean(false);
         public ValidatedInt ancientDebrisLargeSize = new ValidatedInt(3);
         public ValidatedInt ancientDebrisSmallSize = new ValidatedInt(2);
