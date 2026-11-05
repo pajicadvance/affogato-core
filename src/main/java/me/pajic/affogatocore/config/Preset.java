@@ -355,20 +355,21 @@ public enum Preset {
                 ItemStatModification.durability(480, "rearm:netherite_crossbow")
         ));
 
-        addToolStats(stats, "wooden", 80, 3F);
-        addToolStats(stats, "stone", 96, 4F);
-        addToolStats(stats, "copper", 160, 5F);
-        addToolStats(stats, "iron", 320, 7F);
-        addToolStats(stats, "golden", 80, 20F);
-        addToolStats(stats, "diamond", 1280, 9F);
-        addToolStats(stats, "netherite", 2560, 11F);
+        addToolStats(stats, AffogatoCore.MOD_ID, "flint", 80, 3F);
+        addToolStats(stats, "minecraft", "wooden", 80, 3F);
+        addToolStats(stats, "minecraft", "stone", 120, 4F);
+        addToolStats(stats, "minecraft", "copper", 160, 5F);
+        addToolStats(stats, "minecraft", "iron", 320, 7F);
+        addToolStats(stats, "minecraft", "golden", 80, 20F);
+        addToolStats(stats, "minecraft", "diamond", 1280, 9F);
+        addToolStats(stats, "minecraft", "netherite", 2560, 11F);
 
         stats.add(ItemStatModification.attackSpeed(-3.4F,
-                "minecraft:wooden_axe", "minecraft:stone_axe", "minecraft:copper_axe",
+                AffogatoCore.MOD_ID + ":flint_axe", "minecraft:wooden_axe", "minecraft:stone_axe", "minecraft:copper_axe",
                 "minecraft:iron_axe", "minecraft:diamond_axe", "minecraft:netherite_axe"
         ));
         stats.add(ItemStatModification.attackSpeed(-2F,
-                "minecraft:wooden_hoe", "minecraft:stone_hoe", "minecraft:copper_hoe",
+                AffogatoCore.MOD_ID + ":flint_hoe", "minecraft:wooden_hoe", "minecraft:stone_hoe", "minecraft:copper_hoe",
                 "minecraft:iron_hoe", "minecraft:diamond_hoe", "minecraft:netherite_hoe"
         ));
         stats.add(ItemStatModification.attackSpeed(-1.6F, "minecraft:golden_sword"));
@@ -388,12 +389,12 @@ public enum Preset {
         return stats;
     }
 
-    private static void addToolStats(List<ItemStatModification> stats, String material, int durability, float miningSpeed) {
+    private static void addToolStats(List<ItemStatModification> stats, String namespace, String material, int durability, float miningSpeed) {
         stats.add(ItemStatModification.durabilityAndMiningSpeed(durability, miningSpeed,
-                "minecraft:" + material + "_pickaxe", "minecraft:" + material + "_axe",
-                "minecraft:" + material + "_shovel", "minecraft:" + material + "_hoe"
+                namespace + ":" + material + "_pickaxe", namespace + ":" + material + "_axe",
+                namespace + ":" + material + "_shovel", namespace + ":" + material + "_hoe"
         ));
-        stats.add(ItemStatModification.durability(durability, "minecraft:" + material + "_sword"));
+        stats.add(ItemStatModification.durability(durability, namespace + ":" + material + "_sword"));
     }
 
     private static void addArmorStats(List<ItemStatModification> stats, String material, int multiplier) {

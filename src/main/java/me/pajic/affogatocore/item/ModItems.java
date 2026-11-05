@@ -15,7 +15,7 @@ public class ModItems {
 
     private static final ToolMaterial FLINT = new ToolMaterial(
             BlockTags.INCORRECT_FOR_WOODEN_TOOL,
-            ToolMaterial.STONE.durability(),
+            ToolMaterial.WOOD.durability(),
             ToolMaterial.WOOD.speed(),
             ToolMaterial.WOOD.attackDamageBonus(),
             ToolMaterial.WOOD.enchantmentValue(),
