@@ -46,7 +46,7 @@ public class ShaderPresetSetup {
         File shaderPresetsDir = SHADER_PRESETS_DIR.toFile();
         List<ObjectObjectImmutablePair<String, String>> savedHash = new ArrayList<>();
         if (shaderDir.exists() && shaderPresetsDir.exists() && shaderDir.isDirectory() && shaderPresetsDir.isDirectory()) {
-            // check if the preset files are correctly named and add them in index order
+            // check if the preset files are correctly named and add them
             Map<Integer, String> sortedPresets = new TreeMap<>();
             try (Stream<Path> fileStream = Files.walk(SHADER_PRESETS_DIR, 1)) {
                 fileStream.filter(path -> !path.toFile().getName().equals("affogato_presets"))

@@ -1,24 +1,58 @@
 package me.pajic.affogatocore.config;
 
+import me.fzzyhmstrs.fzzy_config.api.ConfigApi;
+import me.fzzyhmstrs.fzzy_config.util.ValidationResult;
 import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedPair;
 import me.pajic.affogatocore.AffogatoCore;
 import me.pajic.affogatocore.util.LootEntryReplacement;
-import me.pajic.affogatocore.util.ToolMaterialId;
-import me.pajic.affogatocore.util.ToolStatReplacement;
-import me.pajic.affogatocore.util.WeaponStatReplacement;
-import me.pajic.affogatocore.util.WeaponType;
-import net.minecraft.world.item.ToolMaterial;
+import me.pajic.affogatocore.util.ItemStatModification;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public enum Preset {
-    AFFOGATO, DISABLE_ALL;
+    AFFOGATO, DISABLE_ALL, CUSTOM;
+
+    private static boolean detecting = false;
 
     public static void apply(Preset preset) {
-        ModConfig config = AffogatoCore.CONFIG;
+        if (!detecting) apply(preset, AffogatoCore.CONFIG);
+    }
 
+    public static boolean detect(ModConfig config) {
+        Preset detected = CUSTOM;
+        for (Preset preset : values()) {
+            if (preset != CUSTOM && matches(preset, config)) {
+                detected = preset;
+                break;
+            }
+        }
+        if (config.preset.get() == detected) return false;
+        detecting = true;
+        try {
+            config.preset.validateAndSet(detected);
+        } finally {
+            detecting = false;
+        }
+        return true;
+    }
+
+    private static boolean matches(Preset preset, ModConfig config) {
+        ModConfig expected = new ModConfig();
+        apply(preset, expected);
+        expected.preset.validateAndSet(config.preset.get());
+        expected.debug = config.debug;
+        return serialize(expected).equals(serialize(config));
+    }
+
+    private static String serialize(ModConfig config) {
+        return ConfigApi.serializeConfig(config, ValidationResult.Companion.createMutable("Preset detection")).get();
+    }
+
+    private static void apply(Preset preset, ModConfig config) {
         switch (preset) {
+            case CUSTOM -> {}
             case AFFOGATO -> {
                 // Packs
                 config.packs.earlyGameExtension.validateAndSet(true);
@@ -43,31 +77,6 @@ public enum Preset {
                 config.exhaustionValues.swimSlow.validateAndSet(0.01F);
                 config.exhaustionValues.takeDamage.validateAndSet(2.0F);
                 config.exhaustionValues.throwWeapon.validateAndSet(0.25F);
-
-                // Durabilities
-                config.durabilities.helmetBase.validateAndSet(13);
-                config.durabilities.bodyBase.validateAndSet(16);
-                config.durabilities.leggingsBase.validateAndSet(14);
-                config.durabilities.bootsBase.validateAndSet(12);
-                config.durabilities.leatherArmorMult.validateAndSet(8);
-                config.durabilities.copperArmorMult.validateAndSet(10);
-                config.durabilities.ironArmorMult.validateAndSet(12);
-                config.durabilities.goldenArmorMult.validateAndSet(6);
-                config.durabilities.diamondArmorMult.validateAndSet(20);
-                config.durabilities.netheriteArmorMult.validateAndSet(30);
-                config.durabilities.turtleArmorMult.validateAndSet(16);
-                config.durabilities.wolfArmorMult.validateAndSet(8);
-                config.durabilities.overrides.validateAndSet(Map.ofEntries(
-                        Map.entry("minecraft:bow", 256),
-                        Map.entry("minecraft:elytra", 640),
-                        Map.entry("minecraft:shears", 256),
-                        Map.entry("minecraft:shield", 384),
-                        Map.entry("minecraft:crossbow", 320),
-                        Map.entry("minecraft:trident", 384),
-                        Map.entry("reliable_gliders:glider", 240),
-                        Map.entry("rearm:netherite_bow", 384),
-                        Map.entry("rearm:netherite_crossbow", 480)
-                ));
 
                 // Loot
                 config.loot.lootEntryReplacements.validateAndSet(Map.ofEntries(
@@ -187,36 +196,8 @@ public enum Preset {
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(true);
                 config.modIntegration.mastercutterAdvancementRemoval.validateAndSet(true);
 
-                // Tool stats
-                config.toolStats.validateAndSet(List.of(
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.WOOD), 80, 3F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.STONE), 96, 4F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), 160, 5F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.IRON), 320, 7F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), 80, 20F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), 1280, 9F),
-                        new ToolStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), 2560, 11F)
-                ));
-
-                // Weapon stats
-                config.weaponStats.validateAndSet(List.of(
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.WOOD), WeaponType.AXE, -3.4F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.STONE), WeaponType.AXE, -3.4F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.IRON), WeaponType.AXE, -3.4F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), WeaponType.AXE, -3.4F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), WeaponType.AXE, -3.4F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), WeaponType.AXE, -3.4F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.WOOD), WeaponType.HOE, -2F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.STONE), WeaponType.HOE, -2F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.IRON), WeaponType.HOE, -2F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.COPPER), WeaponType.HOE, -2F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.DIAMOND), WeaponType.HOE, -2F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.NETHERITE), WeaponType.HOE, -2F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.SWORD, -1.6F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.PICKAXE, -2.2F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.SHOVEL, -2.5F),
-                        new WeaponStatReplacement(ToolMaterialId.of(ToolMaterial.GOLD), WeaponType.HOE, 0F)
-                ));
+                // Item stats
+                config.itemStats.validateAndSet(affogatoItemStats());
 
                 // Misc
                 config.misc.hardDifficultyDefault.validateAndSet(true);
@@ -234,6 +215,7 @@ public enum Preset {
                 config.misc.moreStoneTypesInStoneCraftingRecipes.validateAndSet(true);
                 config.misc.fixOcelotSpawn.validateAndSet(true);
                 config.misc.noVillagerRerolling.validateAndSet(true);
+                config.misc.potentSulfurEruptionFrequencyMult.validateAndSet(0.33F);
                 config.misc.suppressWorldgenReadWarning.validateAndSet(true);
             }
             case DISABLE_ALL -> {
@@ -261,21 +243,6 @@ public enum Preset {
                 config.exhaustionValues.takeDamage.validateAndSet(0.1F);
                 config.exhaustionValues.throwWeapon.validateAndSet(0F);
 
-                // Durabilities
-                config.durabilities.helmetBase.validateAndSet(11);
-                config.durabilities.bodyBase.validateAndSet(16);
-                config.durabilities.leggingsBase.validateAndSet(15);
-                config.durabilities.bootsBase.validateAndSet(13);
-                config.durabilities.leatherArmorMult.validateAndSet(5);
-                config.durabilities.copperArmorMult.validateAndSet(11);
-                config.durabilities.ironArmorMult.validateAndSet(15);
-                config.durabilities.goldenArmorMult.validateAndSet(7);
-                config.durabilities.diamondArmorMult.validateAndSet(33);
-                config.durabilities.netheriteArmorMult.validateAndSet(37);
-                config.durabilities.turtleArmorMult.validateAndSet(25);
-                config.durabilities.wolfArmorMult.validateAndSet(4);
-                config.durabilities.overrides.validateAndSet(Map.of());
-
                 // Loot
                 config.loot.lootEntryReplacements.validateAndSet(Map.of());
                 config.loot.totemMap.validateAndSet(Map.of());
@@ -284,6 +251,9 @@ public enum Preset {
                 config.loot.tridentEnchantmentsFromElderGuardians.validateAndSet(false);
                 config.loot.frostWalkerOnlyInIgloosAndIceBox.validateAndSet(false);
                 config.loot.cursesOnlyInDesertPyramids.validateAndSet(false);
+                config.loot.curseEnchantedBookChance.validateAndSet(0.5);
+                config.loot.frostWalkerIglooChance.validateAndSet(0.5);
+                config.loot.frostWalkerIceBoxChance.validateAndSet(1.0);
 
                 // Worldgen
                 config.worldgen.dungeonChanceMult.validateAndSet(1F);
@@ -299,7 +269,9 @@ public enum Preset {
                 config.worldgen.ancientDebrisMinAmount.validateAndSet(0);
                 config.worldgen.removeAncientDebrisHeightLimit.validateAndSet(false);
                 config.worldgen.addRandomChestsToMansions.validateAndSet(false);
+                config.worldgen.mansionRandomChestChance.validateAndSet(0.0039F);
                 config.worldgen.addRandomChestsToMonuments.validateAndSet(false);
+                config.worldgen.monumentRandomChestChance.validateAndSet(0.0025F);
 
                 // Experience
                 config.experience.recipeXpSwapByResult.validateAndSet(Map.of());
@@ -337,9 +309,8 @@ public enum Preset {
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(false);
                 config.modIntegration.mastercutterAdvancementRemoval.validateAndSet(false);
 
-                // Tool & weapon stats
-                config.toolStats.validateAndSet(List.of());
-                config.weaponStats.validateAndSet(List.of());
+                // Item stats
+                config.itemStats.validateAndSet(List.of());
 
                 // Misc
                 config.misc.hardDifficultyDefault.validateAndSet(false);
@@ -357,8 +328,70 @@ public enum Preset {
                 config.misc.moreStoneTypesInStoneCraftingRecipes.validateAndSet(false);
                 config.misc.fixOcelotSpawn.validateAndSet(false);
                 config.misc.noVillagerRerolling.validateAndSet(false);
+                config.misc.potentSulfurEruptionFrequencyMult.validateAndSet(1F);
                 config.misc.suppressWorldgenReadWarning.validateAndSet(false);
             }
         }
+    }
+
+    private static List<ItemStatModification> affogatoItemStats() {
+        List<ItemStatModification> stats = new ArrayList<>(List.of(
+                ItemStatModification.durability(256, "minecraft:bow"),
+                ItemStatModification.durability(640, "minecraft:elytra"),
+                ItemStatModification.durability(256, "minecraft:shears"),
+                ItemStatModification.durability(384, "minecraft:shield"),
+                ItemStatModification.durability(320, "minecraft:crossbow"),
+                ItemStatModification.durability(384, "minecraft:trident"),
+                ItemStatModification.durability(240, "reliable_gliders:glider"),
+                ItemStatModification.durability(384, "rearm:netherite_bow"),
+                ItemStatModification.durability(480, "rearm:netherite_crossbow")
+        ));
+
+        addToolStats(stats, "wooden", 80, 3F);
+        addToolStats(stats, "stone", 96, 4F);
+        addToolStats(stats, "copper", 160, 5F);
+        addToolStats(stats, "iron", 320, 7F);
+        addToolStats(stats, "golden", 80, 20F);
+        addToolStats(stats, "diamond", 1280, 9F);
+        addToolStats(stats, "netherite", 2560, 11F);
+
+        stats.add(ItemStatModification.attackSpeed(-3.4F,
+                "minecraft:wooden_axe", "minecraft:stone_axe", "minecraft:copper_axe",
+                "minecraft:iron_axe", "minecraft:diamond_axe", "minecraft:netherite_axe"
+        ));
+        stats.add(ItemStatModification.attackSpeed(-2F,
+                "minecraft:wooden_hoe", "minecraft:stone_hoe", "minecraft:copper_hoe",
+                "minecraft:iron_hoe", "minecraft:diamond_hoe", "minecraft:netherite_hoe"
+        ));
+        stats.add(ItemStatModification.attackSpeed(-1.6F, "minecraft:golden_sword"));
+        stats.add(ItemStatModification.attackSpeed(-2.2F, "minecraft:golden_pickaxe"));
+        stats.add(ItemStatModification.attackSpeed(-2.5F, "minecraft:golden_shovel"));
+        stats.add(ItemStatModification.attackSpeed(0F, "minecraft:golden_hoe"));
+
+        addArmorStats(stats, "leather", 8);
+        addArmorStats(stats, "copper", 10);
+        addArmorStats(stats, "chainmail", 12);
+        addArmorStats(stats, "iron", 12);
+        addArmorStats(stats, "golden", 6);
+        addArmorStats(stats, "diamond", 20);
+        addArmorStats(stats, "netherite", 30);
+        stats.add(ItemStatModification.durability(13 * 16, "minecraft:turtle_helmet"));
+        stats.add(ItemStatModification.durability(16 * 8, "minecraft:wolf_armor"));
+        return stats;
+    }
+
+    private static void addToolStats(List<ItemStatModification> stats, String material, int durability, float miningSpeed) {
+        stats.add(ItemStatModification.durabilityAndMiningSpeed(durability, miningSpeed,
+                "minecraft:" + material + "_pickaxe", "minecraft:" + material + "_axe",
+                "minecraft:" + material + "_shovel", "minecraft:" + material + "_hoe"
+        ));
+        stats.add(ItemStatModification.durability(durability, "minecraft:" + material + "_sword"));
+    }
+
+    private static void addArmorStats(List<ItemStatModification> stats, String material, int multiplier) {
+        stats.add(ItemStatModification.durability(13 * multiplier, "minecraft:" + material + "_helmet"));
+        stats.add(ItemStatModification.durability(16 * multiplier, "minecraft:" + material + "_chestplate"));
+        stats.add(ItemStatModification.durability(14 * multiplier, "minecraft:" + material + "_leggings"));
+        stats.add(ItemStatModification.durability(12 * multiplier, "minecraft:" + material + "_boots"));
     }
 }

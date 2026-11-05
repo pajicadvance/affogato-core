@@ -3,6 +3,7 @@ package me.pajic.affogatocore.config;
 import me.fzzyhmstrs.fzzy_config.annotations.Version;
 import me.fzzyhmstrs.fzzy_config.config.Config;
 import me.fzzyhmstrs.fzzy_config.config.ConfigSection;
+import me.fzzyhmstrs.fzzy_config.event.api.ServerUpdateContext;
 import me.fzzyhmstrs.fzzy_config.validation.collection.ValidatedList;
 import me.fzzyhmstrs.fzzy_config.validation.collection.ValidatedMap;
 import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedAny;
@@ -15,9 +16,9 @@ import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat;
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedInt;
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedNumber;
 import me.pajic.affogatocore.AffogatoCore;
+import me.pajic.affogatocore.util.ItemStatModification;
 import me.pajic.affogatocore.util.LootEntryReplacement;
-import me.pajic.affogatocore.util.ToolStatReplacement;
-import me.pajic.affogatocore.util.WeaponStatReplacement;
+import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 @Version(version = 1)
@@ -27,17 +28,30 @@ public class ModConfig extends Config {
         super(AffogatoCore.id("config"));
     }
 
+    @Override
+    public void onSyncClient() {
+        Preset.detect(this);
+    }
+
+    @Override
+    public void onUpdateClient() {
+        Preset.detect(this);
+    }
+
+    @Override
+    public void onUpdateServer(@NotNull ServerUpdateContext context) {
+        if (Preset.detect(this)) save();
+    }
+
     public ValidatedEnum<Preset> preset = new ValidatedEnum<>(Preset.DISABLE_ALL);
     public Packs packs = new Packs();
     public ExhaustionValues exhaustionValues = new ExhaustionValues();
-    public Durabilities durabilities = new Durabilities();
     public Loot loot = new Loot();
     public Worldgen worldgen = new Worldgen();
     public Experience experience = new Experience();
     public Combat combat = new Combat();
     public ModIntegration modIntegration = new ModIntegration();
-    public ValidatedList<ToolStatReplacement> toolStats = new ValidatedAny<>(new ToolStatReplacement()).toList();
-    public ValidatedList<WeaponStatReplacement> weaponStats = new ValidatedAny<>(new WeaponStatReplacement()).toList();
+    public ValidatedList<ItemStatModification> itemStats = new ValidatedAny<>(new ItemStatModification()).toList();
     public Misc misc = new Misc();
     public Debug debug = new Debug();
 
@@ -65,25 +79,6 @@ public class ModConfig extends Config {
         public ValidatedFloat swimSlow = new ValidatedFloat(0.01F);
         public ValidatedFloat takeDamage = new ValidatedFloat(0.1F);
         public ValidatedFloat throwWeapon = new ValidatedFloat(0);
-    }
-
-    public static class Durabilities extends ConfigSection {
-        public ValidatedInt helmetBase = new ValidatedInt(11);
-        public ValidatedInt bodyBase = new ValidatedInt(16);
-        public ValidatedInt leggingsBase = new ValidatedInt(15);
-        public ValidatedInt bootsBase = new ValidatedInt(13);
-        public ValidatedInt leatherArmorMult = new ValidatedInt(5);
-        public ValidatedInt copperArmorMult = new ValidatedInt(11);
-        public ValidatedInt ironArmorMult = new ValidatedInt(15);
-        public ValidatedInt goldenArmorMult = new ValidatedInt(7);
-        public ValidatedInt diamondArmorMult = new ValidatedInt(33);
-        public ValidatedInt netheriteArmorMult = new ValidatedInt(37);
-        public ValidatedInt turtleArmorMult = new ValidatedInt(25);
-        public ValidatedInt wolfArmorMult = new ValidatedInt(4);
-        public ValidatedMap<String, Integer> overrides = (new ValidatedMap.Builder())
-                .keyHandler(new ValidatedString())
-                .valueHandler(new ValidatedInt(1, Integer.MAX_VALUE, 1))
-                .build();
     }
 
     public static class Loot extends ConfigSection {
@@ -153,7 +148,7 @@ public class ModConfig extends Config {
         public ValidatedInt illusionerFollowRange = new ValidatedInt(32);
         public ValidatedInt pillagerFollowRange = new ValidatedInt(32);
         public ValidatedInt ravagerFollowRange = new ValidatedInt(32);
-        public ValidatedFloat ravagerRoarKnockbackMult = new ValidatedFloat(0.1F);
+        public ValidatedFloat ravagerRoarKnockbackMult = new ValidatedFloat(1.0F);
         public ValidatedInt zombieFollowRange = new ValidatedInt(35);
         public ValidatedInt zombieAlertOtherRange = new ValidatedInt(35);
         public ValidatedInt drownedTridentThrowDelay = new ValidatedInt(40);
@@ -177,6 +172,7 @@ public class ModConfig extends Config {
         public ValidatedBoolean moreStoneTypesInStoneCraftingRecipes = new ValidatedBoolean(false);
         public ValidatedBoolean fixOcelotSpawn = new ValidatedBoolean(false);
         public ValidatedBoolean noVillagerRerolling = new ValidatedBoolean(false);
+        public ValidatedFloat potentSulfurEruptionFrequencyMult = new ValidatedFloat(1F, 100F, 0.01F);
         public ValidatedBoolean suppressWorldgenReadWarning = new ValidatedBoolean(false);
     }
 
@@ -189,7 +185,6 @@ public class ModConfig extends Config {
     }
 
     public static class Debug extends ConfigSection {
-        public ValidatedBoolean logMaterialIds = new ValidatedBoolean(false);
         public ValidatedBoolean exportJsonPatches = new ValidatedBoolean(false);
     }
 }
