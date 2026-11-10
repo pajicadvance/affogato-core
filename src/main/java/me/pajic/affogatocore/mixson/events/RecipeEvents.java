@@ -32,25 +32,27 @@ public class RecipeEvents {
                 "Modify smelting and blasting recipe XP rewards",
                 index -> index.id().getPath().startsWith("recipe/") && !index.id().getNamespace().equals("emi"),
                 context -> {
-                    String type = context.getFile().getAsJsonObject().getAsJsonPrimitive("type").getAsString();
-                    boolean xpSwapEnabled = !AffogatoCore.CONFIG.experience.recipeXpSwapByResult.get().isEmpty() ||
-                            !AffogatoCore.CONFIG.experience.recipeXpSwapByInput.get().isEmpty();
-                    if (xpSwapEnabled && context.getFile().getAsJsonObject().has("experience")) {
-                        if (type.equals("minecraft:campfire_cooking") || type.equals("minecraft:smoking") || type.equals("simplekiln:kiln_smelting"))
-                            context.getFile().getAsJsonObject().remove("experience");
-                        if (type.equals("minecraft:smelting") || type.equals("minecraft:blasting")) {
-                            String resultItem = context.getFile().getAsJsonObject().getAsJsonObject("result").getAsJsonPrimitive("id").getAsString();
-                            if (AffogatoCore.CONFIG.experience.recipeXpSwapByResult.get().containsKey(resultItem))
-                                context.getFile().getAsJsonObject().addProperty("experience", AffogatoCore.CONFIG.experience.recipeXpSwapByResult.get().get(resultItem));
-                            else {
-                                JsonElement inputItems = context.getFile().getAsJsonObject().get("ingredient");
-                                if (!inputItems.isJsonArray()) {
-                                    String inputItem = inputItems.getAsString();
-                                    if (AffogatoCore.CONFIG.experience.recipeXpSwapByInput.get().containsKey(inputItem))
-                                        context.getFile().getAsJsonObject().addProperty("experience", AffogatoCore.CONFIG.experience.recipeXpSwapByInput.get().get(inputItem));
-                                    else context.getFile().getAsJsonObject().remove("experience");
+                    JsonObject file = context.getFile().getAsJsonObject();
+                    if (file.has("type")) {
+                        String type = file.getAsJsonPrimitive("type").getAsString();
+                        boolean xpSwapEnabled = !AffogatoCore.CONFIG.experience.recipeXpSwapByResult.get().isEmpty() ||
+                                !AffogatoCore.CONFIG.experience.recipeXpSwapByInput.get().isEmpty();
+                        if (xpSwapEnabled && file.has("experience")) {
+                            if (type.equals("minecraft:campfire_cooking") || type.equals("minecraft:smoking") || type.equals("simplekiln:kiln_smelting"))
+                                file.remove("experience");
+                            if (type.equals("minecraft:smelting") || type.equals("minecraft:blasting")) {
+                                String resultItem = file.getAsJsonObject("result").getAsJsonPrimitive("id").getAsString();
+                                if (AffogatoCore.CONFIG.experience.recipeXpSwapByResult.get().containsKey(resultItem))
+                                    file.addProperty("experience", AffogatoCore.CONFIG.experience.recipeXpSwapByResult.get().get(resultItem));
+                                else {
+                                    JsonElement inputItems = file.get("ingredient");
+                                    if (!inputItems.isJsonArray()) {
+                                        String inputItem = inputItems.getAsString();
+                                        if (AffogatoCore.CONFIG.experience.recipeXpSwapByInput.get().containsKey(inputItem))
+                                            file.addProperty("experience", AffogatoCore.CONFIG.experience.recipeXpSwapByInput.get().get(inputItem));
+                                        else file.remove("experience");
+                                    } else file.remove("experience");
                                 }
-                                else context.getFile().getAsJsonObject().remove("experience");
                             }
                         }
                     }
