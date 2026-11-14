@@ -195,6 +195,7 @@ public enum Preset {
                 config.modIntegration.fdCakeSliceSaturationLevel.validateAndSet(0.3F);
                 config.modIntegration.penchantXpCostMult.validateAndSet(3);
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(true);
+                config.modIntegration.coffinActivationRange.validateAndSet(8);
                 config.modIntegration.mastercutterAdvancementRemoval.validateAndSet(true);
 
                 // Item stats
@@ -312,6 +313,7 @@ public enum Preset {
                 config.modIntegration.fdCakeSliceSaturationLevel.validateAndSet(0.1F);
                 config.modIntegration.penchantXpCostMult.validateAndSet(1);
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(false);
+                config.modIntegration.coffinActivationRange.validateAndSet(48);
                 config.modIntegration.mastercutterAdvancementRemoval.validateAndSet(false);
 
                 // Item stats

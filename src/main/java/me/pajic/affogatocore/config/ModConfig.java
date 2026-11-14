@@ -185,6 +185,7 @@ public class ModConfig extends Config {
         public ValidatedFloat fdCakeSliceSaturationLevel = new ValidatedFloat(0.1F);
         public ValidatedInt penchantXpCostMult = new ValidatedInt(1, 8, 1);
         public ValidatedBoolean penchantProgressOnHostileKill = new ValidatedBoolean(false);
+        public ValidatedInt coffinActivationRange = new ValidatedInt(48, 48, 1);
         public ValidatedBoolean mastercutterAdvancementRemoval = new ValidatedBoolean(false);
     }
 
