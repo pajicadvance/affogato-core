@@ -1,1 +1,5 @@
-- Fixed feature cycle error with Wilder Clifftree.
+- Initial 26.3 release
+- Added preset system, including 2 presets: "Affogato" and "Disable All"
+- The default preset is "Disable All"
+- Updated mod documentation
+- Many technical improvements to existing features
