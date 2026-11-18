@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "minecraft:stick",
+    "N": "minecraft:iron_nugget",
+    "X": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "N N",
+    "X#X",
+    "N N"
+  ],
+  "result": {
+    "count": 20,
+    "id": "minecraft:rail"
+  }
+}
