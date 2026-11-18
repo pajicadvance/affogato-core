@@ -1,5 +1,6 @@
 package me.pajic.affogatocore.util;
 
+import me.pajic.affogatocore.AffogatoCore;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.level.levelgen.structure.structures.MineshaftStructure;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,6 +23,12 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 public class StructureGenUtil {
+
+    public static final MineshaftStructure.Type DEEPSLATE_MINESHAFT_TYPE = MineshaftStructure.Type.valueOf("AFFOGATOCORE_DEEPSLATE");
+
+    public static boolean isDeepslateMineshaftPiece(BoundingBox pieceBoundingBox) {
+        return AffogatoCore.CONFIG.worldgen.deepslateMineshaftVariant.get() && pieceBoundingBox.minY() < 0;
+    }
 
     public static void placeChestsAtRandomLocations(
             BoundingBox chunkBoundingBox,

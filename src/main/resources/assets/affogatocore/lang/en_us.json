@@ -1,8 +1,4 @@
 {
-  "biome.nullscape.crystal_peaks": "Crystal Peaks",
-  "biome.nullscape.shadowlands": "Shadowlands",
-  "biome.nullscape.void_barrens": "Void Barrens",
-
   "config.affogatocore.settings": "Settings",
   "config.affogatocore.shaderPreset": "Shader preset",
   "config.affogatocore.shaderPreset.tooltip": "Applies a shader preset preconfigured by the modpack.",
@@ -13,8 +9,6 @@
   "config.affogatocore.shaderPreset.low": "Low",
   "config.affogatocore.shaderPreset.medium": "Medium",
   "config.affogatocore.shaderPreset.high": "High",
-  "config.affogatocore.framePacingFix": "Frame pacing fix",
-  "config.affogatocore.framePacingFix.tooltip": "Frame pacing fix",
 
   "advancements.story.cutting_edge.title": "Embracing the Cutting Edge",
   "advancements.story.cutting_edge.description": "Harvest Flint from Gravel and Sticks from Leaves and make your first tool with an Axe Head",
@@ -28,6 +22,16 @@
   "item.affogatocore.flint_sword": "Flint Sword",
   "item.affogatocore.flint_spear": "Flint Spear",
   "item.affogatocore.flint_axe_head": "Flint Axe Head",
+
+  "block.affogatocore.mossy_cobbled_deepslate": "Mossy Cobbled Deepslate",
+  "block.affogatocore.mossy_cobbled_deepslate_stairs": "Mossy Cobbled Deepslate Stairs",
+  "block.affogatocore.mossy_cobbled_deepslate_slab": "Mossy Cobbled Deepslate Slab",
+  "block.affogatocore.mossy_cobbled_deepslate_wall": "Mossy Cobbled Deepslate Wall",
+  "block.affogatocore.mossy_deepslate_bricks": "Mossy Deepslate Bricks",
+  "block.affogatocore.mossy_deepslate_brick_stairs": "Mossy Deepslate Brick Stairs",
+  "block.affogatocore.mossy_deepslate_brick_slab": "Mossy Deepslate Brick Slab",
+  "block.affogatocore.mossy_deepslate_brick_wall": "Mossy Deepslate Brick Wall",
+  "block.affogatocore.infested_mossy_deepslate_bricks": "Infested Mossy Deepslate Bricks",
 
   "tag.item.affogatocore.flint_tool_materials": "Flint Tool Materials",
   "tag.item.farmersdelight.drinks": "Drinks",

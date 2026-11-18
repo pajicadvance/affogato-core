@@ -5,7 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.Item;
-import org.jspecify.annotations.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 public class ModItem extends Item {
 
@@ -17,7 +17,7 @@ public class ModItem extends Item {
     }
 
     @Override
-    public boolean isEnabled(@NonNull FeatureFlagSet featureFlagSet) {
+    public boolean isEnabled(@NotNull FeatureFlagSet featureFlagSet) {
         return enabled;
     }
 }

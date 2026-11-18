@@ -18,6 +18,8 @@ Features:
 - Apply depth-based ore size multipliers in the Overworld, with configurable multipliers and heights.
 - Modify generation rules for ancient debris: vein sizes, minimum amount, air exposure and height limit.
 - Place extra loot chests at random enclosed locations inside woodland mansions and ocean monuments.
+- Generate dungeons in the deepslate layer out of cobbled deepslate and mossy cobbled deepslate. Requires the Mossy Deepslate block set.
+- Make mineshafts in the deepslate layer use spruce wood and lanterns (placed on walls if Lanterns Belong on Walls is installed), with more frequent and more continuous rails, occasional activator rails powered by redstone torches, TNT minecarts on rails, and more chest minecarts.
 - Remove all XP rewards from smelting and blasting recipes, while allowing and specifying the XP reward for recipes which match the specified input or output item.
 - Adjust the amount of XP dropped from mining ore. Works with Universal Ores.
 - Prevent XP drops from all mobs, fishing, trading, and Ender Dragon kills after the first.
@@ -79,6 +81,9 @@ Packs (toggleable via config):
     - Allows crafting crying obsidian by combining obsidian and a ghast tear.
     - Allows crafting glowstone dust by combining redstone and blaze powder.
     - If Farmer's Delight is present, replaces the cake recipe with one using milk bottles, sugar, sweet berries, an egg, pie crust and apple cider.
+- Mossy Deepslate:
+    - Adds mossy deepslate counterparts of every mossy block: mossy cobbled deepslate and mossy deepslate bricks with their stairs, slabs and walls, and infested mossy deepslate bricks.
+    - Crafted like their vanilla counterparts, using cobbled deepslate or deepslate bricks with vines or moss blocks, and supported by the stonecutter.
 - Affogato Wandering Trader Trades: 
     - Replaces wandering trader trades with custom trades.
 - Affogato Language Overrides (client config):

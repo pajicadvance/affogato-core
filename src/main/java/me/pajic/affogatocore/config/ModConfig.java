@@ -60,6 +60,7 @@ public class ModConfig extends Config {
         public ValidatedBoolean recipeAdditions = new ValidatedBoolean(false);
         public ValidatedBoolean antiFarmPack = new ValidatedBoolean(false);
         public ValidatedBoolean customWanderingTraderTrades = new ValidatedBoolean(false);
+        public ValidatedBoolean mossyDeepslateSet = new ValidatedBoolean(false);
     }
 
     public static class ExhaustionValues extends ConfigSection {
@@ -113,6 +114,11 @@ public class ModConfig extends Config {
         public ValidatedInt ancientDebrisSmallSize = new ValidatedInt(2);
         public ValidatedInt ancientDebrisMinAmount = new ValidatedInt(0);
         public ValidatedBoolean removeAncientDebrisHeightLimit = new ValidatedBoolean(false);
+        public ValidatedBoolean deepslateDungeonVariant = new ValidatedBoolean(false);
+        public ValidatedBoolean deepslateMineshaftVariant = new ValidatedBoolean(false);
+        public ValidatedFloat deepslateMineshaftActivatorRailChance = new ValidatedFloat(0.03F, 1F, 0F);
+        public ValidatedFloat deepslateMineshaftTntMinecartChance = new ValidatedFloat(0.015F, 1F, 0F);
+        public ValidatedFloat deepslateMineshaftChestMinecartMult = new ValidatedFloat(2F, 100F, 0.01F);
         public ValidatedBoolean addRandomChestsToMansions = new ValidatedBoolean(false);
         public ValidatedFloat mansionRandomChestChance = new ValidatedFloat(0.0039F, 1.0F, 0F, ValidatedNumber.WidgetType.TEXTBOX);
         public ValidatedBoolean addRandomChestsToMonuments = new ValidatedBoolean(false);

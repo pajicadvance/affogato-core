@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "affogatocore:block/mossy_deepslate_bricks"
+  }
+}

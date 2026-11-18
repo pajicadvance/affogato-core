@@ -60,6 +60,7 @@ public enum Preset {
                 config.packs.recipeAdditions.validateAndSet(true);
                 config.packs.antiFarmPack.validateAndSet(true);
                 config.packs.customWanderingTraderTrades.validateAndSet(true);
+                config.packs.mossyDeepslateSet.validateAndSet(true);
 
                 // Exhaustion values
                 config.exhaustionValues.attack.validateAndSet(0.5F);
@@ -144,6 +145,11 @@ public enum Preset {
                 config.worldgen.ancientDebrisSmallSize.validateAndSet(6);
                 config.worldgen.ancientDebrisMinAmount.validateAndSet(3);
                 config.worldgen.removeAncientDebrisHeightLimit.validateAndSet(true);
+                config.worldgen.deepslateDungeonVariant.validateAndSet(true);
+                config.worldgen.deepslateMineshaftVariant.validateAndSet(true);
+                config.worldgen.deepslateMineshaftActivatorRailChance.validateAndSet(0.03F);
+                config.worldgen.deepslateMineshaftTntMinecartChance.validateAndSet(0.015F);
+                config.worldgen.deepslateMineshaftChestMinecartMult.validateAndSet(2F);
                 config.worldgen.addRandomChestsToMansions.validateAndSet(true);
                 config.worldgen.mansionRandomChestChance.validateAndSet(0.0039F);
                 config.worldgen.addRandomChestsToMonuments.validateAndSet(true);
@@ -230,6 +236,7 @@ public enum Preset {
                 config.packs.recipeAdditions.validateAndSet(false);
                 config.packs.antiFarmPack.validateAndSet(false);
                 config.packs.customWanderingTraderTrades.validateAndSet(false);
+                config.packs.mossyDeepslateSet.validateAndSet(false);
 
                 // Exhaustion values
                 config.exhaustionValues.attack.validateAndSet(0.1F);
@@ -274,6 +281,11 @@ public enum Preset {
                 config.worldgen.ancientDebrisSmallSize.validateAndSet(2);
                 config.worldgen.ancientDebrisMinAmount.validateAndSet(0);
                 config.worldgen.removeAncientDebrisHeightLimit.validateAndSet(false);
+                config.worldgen.deepslateDungeonVariant.validateAndSet(false);
+                config.worldgen.deepslateMineshaftVariant.validateAndSet(false);
+                config.worldgen.deepslateMineshaftActivatorRailChance.validateAndSet(0.03F);
+                config.worldgen.deepslateMineshaftTntMinecartChance.validateAndSet(0.015F);
+                config.worldgen.deepslateMineshaftChestMinecartMult.validateAndSet(2F);
                 config.worldgen.addRandomChestsToMansions.validateAndSet(false);
                 config.worldgen.mansionRandomChestChance.validateAndSet(0.0039F);
                 config.worldgen.addRandomChestsToMonuments.validateAndSet(false);
