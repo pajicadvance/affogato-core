@@ -77,30 +77,5 @@ public class WorldgenDataEvents {
                                         .getAsJsonPrimitive("frequency").getAsFloat() * AffogatoCore.CONFIG.worldgen.mineshaftChanceMult.get()
                         )
         );
-        MixsonHelper.registerSingleJson(
-                "Fix ocelots being counted as monsters during spawning",
-                "minecraft:worldgen/biome/jungle",
-                context -> {
-                    if (AffogatoCore.CONFIG.misc.fixOcelotSpawn.get()) {
-                        JsonObject spawns = context.getFile().getAsJsonObject()
-                                .getAsJsonObject("attributes")
-                                .getAsJsonObject("minecraft:gameplay/natural_mob_spawns")
-                                .getAsJsonObject("argument")
-                                .getAsJsonObject("spawns_by_category");
-                        JsonArray monsters = spawns.getAsJsonArray("monster");
-                        JsonArray creatures = spawns.getAsJsonArray("creature");
-                        int idToRemove = -1;
-                        for (int i = 0; i < monsters.size(); i++) {
-                            JsonObject monster = monsters.get(i).getAsJsonObject();
-                            if (monster.getAsJsonPrimitive("type").getAsString().equals("minecraft:ocelot")) {
-                                idToRemove = i;
-                                creatures.add(monster);
-                                break;
-                            }
-                        }
-                        if (idToRemove != -1) monsters.remove(idToRemove);
-                    }
-                }
-        );
     }
 }
