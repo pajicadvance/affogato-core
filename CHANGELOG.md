@@ -1,1 +1,1 @@
-- Fixed anti-farm package missing the iron and gold related recipe cost reductions.
+- Removed ocelot spawn fix and ambient sound fixes as they're now in MiscTweaks.
