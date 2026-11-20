@@ -51,7 +51,6 @@
     "integration.universal_ores.UniversalOresBlocksMixin",
     "misc.AmbientMoodSettingsMixin",
     "misc.HoglinMixin",
-    "misc.PotentSulfurBlockEntityMixin",
     "misc.ReplaceDiskMixin",
     "nightvision.FlowerBlockMixin",
     "nightvision.SetPotionFunctionMixin",
@@ -82,9 +81,7 @@
     "earlygame.FindTreeTutorialStepInstanceMixin",
     "earlygame.PunchTreeTutorialStepInstanceMixin",
     "earlygame.TutorialToastIconsMixin",
-    "misc.PackSelectionModelMixin",
-    "misc.PotentSulfurBlockEntityClientMixin",
-    "misc.TrialSpawnerMixin"
+    "misc.PackSelectionModelMixin"
   ],
   "injectors": {
     "defaultRequire": 1
