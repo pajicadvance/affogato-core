@@ -14,7 +14,6 @@ import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedString;
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedDouble;
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat;
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedInt;
-import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedNumber;
 import me.pajic.affogatocore.AffogatoCore;
 import me.pajic.affogatocore.util.ItemStatModification;
 import me.pajic.affogatocore.util.LootEntryReplacement;
@@ -60,7 +59,6 @@ public class ModConfig extends Config {
         public ValidatedBoolean recipeAdditions = new ValidatedBoolean(false);
         public ValidatedBoolean antiFarmPack = new ValidatedBoolean(false);
         public ValidatedBoolean customWanderingTraderTrades = new ValidatedBoolean(false);
-        public ValidatedBoolean mossyDeepslateSet = new ValidatedBoolean(false);
     }
 
     public static class ExhaustionValues extends ConfigSection {
@@ -102,27 +100,11 @@ public class ModConfig extends Config {
     }
 
     public static class Worldgen extends ConfigSection {
-        public ValidatedFloat dungeonChanceMult = new ValidatedFloat(1);
-        public ValidatedFloat mineshaftChanceMult = new ValidatedFloat(1);
-        public ValidatedFloat oreSizeMinMult = new ValidatedFloat(1);
-        public ValidatedFloat oreSizeMaxMult = new ValidatedFloat(1);
-        public ValidatedInt oreSizeMultMaxY = new ValidatedInt(192);
-        public ValidatedInt oreSizeMultMidY = new ValidatedInt(96);
-        public ValidatedInt oreSizeMultMinY = new ValidatedInt(0);
         public ValidatedBoolean allowAncientDebrisAirExposure = new ValidatedBoolean(false);
         public ValidatedInt ancientDebrisLargeSize = new ValidatedInt(3);
         public ValidatedInt ancientDebrisSmallSize = new ValidatedInt(2);
         public ValidatedInt ancientDebrisMinAmount = new ValidatedInt(0);
         public ValidatedBoolean removeAncientDebrisHeightLimit = new ValidatedBoolean(false);
-        public ValidatedBoolean deepslateDungeonVariant = new ValidatedBoolean(false);
-        public ValidatedBoolean deepslateMineshaftVariant = new ValidatedBoolean(false);
-        public ValidatedFloat deepslateMineshaftActivatorRailChance = new ValidatedFloat(0.03F, 1F, 0F);
-        public ValidatedFloat deepslateMineshaftTntMinecartChance = new ValidatedFloat(0.015F, 1F, 0F);
-        public ValidatedFloat deepslateMineshaftChestMinecartMult = new ValidatedFloat(2F, 100F, 0.01F);
-        public ValidatedBoolean addRandomChestsToMansions = new ValidatedBoolean(false);
-        public ValidatedFloat mansionRandomChestChance = new ValidatedFloat(0.0039F, 1.0F, 0F, ValidatedNumber.WidgetType.TEXTBOX);
-        public ValidatedBoolean addRandomChestsToMonuments = new ValidatedBoolean(false);
-        public ValidatedFloat monumentRandomChestChance = new ValidatedFloat(0.0025F, 1.0F, 0F, ValidatedNumber.WidgetType.TEXTBOX);
     }
 
     public static class Experience extends ConfigSection {
@@ -171,7 +153,6 @@ public class ModConfig extends Config {
         public ValidatedInt copperTorchLightLevel = new ValidatedInt(14);
         public ValidatedFloat iceFriction = new ValidatedFloat(0.98F);
         public ValidatedFloat blueIceFriction = new ValidatedFloat(0.989F);
-        public ValidatedInt caveAmbientSoundFrequency = new ValidatedInt(6000, Integer.MAX_VALUE, 0);
         public ValidatedBoolean hoglinSpawnOnlyOnCrimsonNylium = new ValidatedBoolean(false);
         public ValidatedBoolean frostWalkerEarlyTrigger = new ValidatedBoolean(false);
         public ValidatedBoolean ironMinesObsidian = new ValidatedBoolean(false);

@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "affogatocore:mossy_cobbled_deepslate",
-  "result": {
-    "id": "affogatocore:mossy_cobbled_deepslate_stairs"
-  }
-}

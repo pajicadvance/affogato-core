@@ -50,6 +50,8 @@ dependencies {
     compileOnly("maven.modrinth:appleskin:${project.appleskin}")
     compileOnly("maven.modrinth:universal_ores:${project.universal_ores}")
     compileOnly("maven.modrinth:trailier-tales:${project.trailier_tales}")
+    compileOnly("maven.modrinth:embers-and-icicles:${project.embers_and_icicles}")
+    compileOnly("maven.modrinth:variants-and-ventures:${project.variants_and_ventures}")
 }
 
 processResources {

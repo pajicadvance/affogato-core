@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:random_selector",
+  "default": {
+    "feature": {
+      "type": "minecraft:no_op"
+    },
+    "placement": []
+  },
+  "features": [
+    {
+      "chance": 0.02,
+      "feature": {
+        "feature": "clifftree:glow_lichen_ice",
+        "placement": []
+      }
+    }
+  ]
+}

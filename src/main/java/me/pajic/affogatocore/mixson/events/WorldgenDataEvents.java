@@ -1,8 +1,6 @@
 package me.pajic.affogatocore.mixson.events;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import me.pajic.affogatocore.AffogatoCore;
 import me.pajic.affogatocore.mixson.MixsonHelper;
@@ -51,31 +49,6 @@ public class WorldgenDataEvents {
                         context.getFile().getAsJsonObject().add("placement", updatedPlacement);
                     }
                 }
-        );
-        MixsonHelper.registerMultiJson(
-                "Increase dungeon spawn rate",
-                index -> index.id().toString().startsWith("minecraft:worldgen/placed_feature/monster_room"),
-                context -> {
-                    JsonArray placement = context.getFile().getAsJsonObject().getAsJsonArray("placement");
-                    for (JsonElement element : placement) {
-                        JsonObject object = element.getAsJsonObject();
-                        String type = object.getAsJsonPrimitive("type").getAsString();
-                        if (type.equals("minecraft:count")) {
-                            object.addProperty("count", Math.round(
-                                    object.getAsJsonPrimitive("count").getAsInt() * AffogatoCore.CONFIG.worldgen.dungeonChanceMult.get()
-                            ));
-                        }
-                    }
-                }
-        );
-        MixsonHelper.registerSingleJson(
-                "Increase mineshaft spawn rate",
-                "minecraft:worldgen/structure_set/mineshafts",
-                context -> context.getFile().getAsJsonObject()
-                        .getAsJsonObject("placement").addProperty("frequency",
-                                context.getFile().getAsJsonObject().getAsJsonObject("placement")
-                                        .getAsJsonPrimitive("frequency").getAsFloat() * AffogatoCore.CONFIG.worldgen.mineshaftChanceMult.get()
-                        )
         );
     }
 }

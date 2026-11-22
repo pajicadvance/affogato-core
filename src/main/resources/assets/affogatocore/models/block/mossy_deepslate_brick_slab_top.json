@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "affogatocore:block/mossy_deepslate_bricks",
-    "side": "affogatocore:block/mossy_deepslate_bricks",
-    "top": "affogatocore:block/mossy_deepslate_bricks"
-  }
-}

@@ -1,0 +1,16 @@
+{
+  "type": "lithostitched:add_biome_spawns",
+  "biomes": "minecraft:ice_caves",
+  "spawners": [
+    {
+      "type": "embers_and_icicles:frostbite",
+      "weight": 50,
+      "count": 4
+    },
+    {
+      "type": "minecraft:stray",
+      "weight": 10,
+      "count": 4
+    }
+  ]
+}

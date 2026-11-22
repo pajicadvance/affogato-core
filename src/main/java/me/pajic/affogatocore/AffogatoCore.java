@@ -5,7 +5,6 @@ import me.pajic.affogatocore.config.ModConfig;
 import me.pajic.affogatocore.config.Preset;
 import me.pajic.affogatocore.pack.ModDataPacks;
 import me.pajic.affogatocore.integration.PenchantProgressEvents;
-import me.pajic.affogatocore.block.ModBlocks;
 import me.pajic.affogatocore.item.ItemStatModifications;
 import me.pajic.affogatocore.item.ModItems;
 import me.pajic.affogatocore.mixson.MixsonInitializer;
@@ -25,7 +24,6 @@ public class AffogatoCore implements ModInitializer {
     @Override
     public void onInitialize() {
         MixsonInitializer.init();
-        ModBlocks.init();
         ModItems.init();
         ModDataPacks.init();
         if (CompatFlags.PENCHANT_LOADED) PenchantProgressEvents.init();

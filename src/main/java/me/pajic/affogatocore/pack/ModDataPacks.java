@@ -24,13 +24,16 @@ public class ModDataPacks {
                     "wandering_trades/fd", "Custom wandering trader trades - Farmer's Delight integration"
             );
         }
-        if (AffogatoCore.CONFIG.packs.mossyDeepslateSet.get()) {
-            PackUtil.registerPersistentPack("mossy_deepslate/vanilla", "Mossy deepslate");
+        if (CompatFlags.CLIFFTREE_LOADED && CompatFlags.EMBERS_AND_ICICLES_LOADED) {
+            PackUtil.registerPersistentPack("ice_caves/clifftree_embers_and_icicles", "CliffTree ice caves - Embers and Icicles integration");
         }
         if (AffogatoCore.CONFIG.packs.antiFarmPack.get()) {
             PackUtil.registerPersistentPack("anti_farm/vanilla", "Anti-farm pack");
             if (CompatFlags.VARIANTS_AND_VENTURES_LOADED) PackUtil.registerPersistentPack(
                     "anti_farm/vav", "Anti-farm pack - Variants and Ventures integration"
+            );
+            if (CompatFlags.EMBERS_AND_ICICLES_LOADED) PackUtil.registerPersistentPack(
+                    "anti_farm/embers_and_icicles", "Anti-farm pack - Embers and Icicles integration"
             );
         }
     }

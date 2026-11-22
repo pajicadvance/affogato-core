@@ -1,0 +1,9 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": "minecraft:ice_caves",
+  "features": [
+    "embers_and_icicles:icicle_cluster",
+    "embers_and_icicles:ice_crystals"
+  ],
+  "step": "vegetal_decoration"
+}

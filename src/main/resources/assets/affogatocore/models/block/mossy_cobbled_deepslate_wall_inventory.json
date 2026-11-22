@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/wall_inventory",
-  "textures": {
-    "wall": "affogatocore:block/mossy_cobbled_deepslate"
-  }
-}

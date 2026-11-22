@@ -1,1 +1,4 @@
-- Removed ocelot spawn fix and ambient sound fixes as they're now in MiscTweaks.
+- Moved the Mossy Deepslate block set, Fiery Spider, deepslate and Nether mineshafts, deepslate dungeons, dungeon and mineshaft generation chance, depth-based ore size multipliers, extra mansion and ocean monument chests and cave ambient sound frequency to Deeper Delvings (upcoming mod).
+- Added CliffTree + Embers and Icicles compatibility data pack, automatically enabled when both mods are installed.
+- Patched Iris to enable custom ice cave effects from Complementary Shaders in Minecraft 26.3.
+- The Gelid zombie variant from Variants and Ventures is now disabled in favor of the Frostbite zombie variant from Embers and Icicles when both mods are installed.

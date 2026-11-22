@@ -23,16 +23,6 @@
   "item.affogatocore.flint_spear": "Flint Spear",
   "item.affogatocore.flint_axe_head": "Flint Axe Head",
 
-  "block.affogatocore.mossy_cobbled_deepslate": "Mossy Cobbled Deepslate",
-  "block.affogatocore.mossy_cobbled_deepslate_stairs": "Mossy Cobbled Deepslate Stairs",
-  "block.affogatocore.mossy_cobbled_deepslate_slab": "Mossy Cobbled Deepslate Slab",
-  "block.affogatocore.mossy_cobbled_deepslate_wall": "Mossy Cobbled Deepslate Wall",
-  "block.affogatocore.mossy_deepslate_bricks": "Mossy Deepslate Bricks",
-  "block.affogatocore.mossy_deepslate_brick_stairs": "Mossy Deepslate Brick Stairs",
-  "block.affogatocore.mossy_deepslate_brick_slab": "Mossy Deepslate Brick Slab",
-  "block.affogatocore.mossy_deepslate_brick_wall": "Mossy Deepslate Brick Wall",
-  "block.affogatocore.infested_mossy_deepslate_bricks": "Infested Mossy Deepslate Bricks",
-
   "tag.item.affogatocore.flint_tool_materials": "Flint Tool Materials",
   "tag.item.farmersdelight.drinks": "Drinks",
   "tag.item.farmersdelight.feasts": "Feasts",

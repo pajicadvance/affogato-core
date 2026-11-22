@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "affogatocore:mossy_deepslate_bricks",
-  "result": {
-    "id": "affogatocore:mossy_deepslate_brick_wall"
-  }
-}

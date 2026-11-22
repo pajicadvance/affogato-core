@@ -1,0 +1,6 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": "minecraft:ice_caves",
+  "features": "embers_and_icicles:ice_crevasse",
+  "step": "underground_decoration"
+}

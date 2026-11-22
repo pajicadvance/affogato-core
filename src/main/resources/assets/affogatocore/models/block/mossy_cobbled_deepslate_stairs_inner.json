@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "affogatocore:block/mossy_cobbled_deepslate",
-    "side": "affogatocore:block/mossy_cobbled_deepslate",
-    "top": "affogatocore:block/mossy_cobbled_deepslate"
-  }
-}

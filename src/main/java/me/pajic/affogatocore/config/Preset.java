@@ -60,7 +60,6 @@ public enum Preset {
                 config.packs.recipeAdditions.validateAndSet(true);
                 config.packs.antiFarmPack.validateAndSet(true);
                 config.packs.customWanderingTraderTrades.validateAndSet(true);
-                config.packs.mossyDeepslateSet.validateAndSet(true);
 
                 // Exhaustion values
                 config.exhaustionValues.attack.validateAndSet(0.5F);
@@ -133,27 +132,11 @@ public enum Preset {
                 config.loot.frostWalkerIceBoxChance.validateAndSet(1.0);
 
                 // Worldgen
-                config.worldgen.dungeonChanceMult.validateAndSet(1.3F);
-                config.worldgen.mineshaftChanceMult.validateAndSet(1.2F);
-                config.worldgen.oreSizeMinMult.validateAndSet(0.8F);
-                config.worldgen.oreSizeMaxMult.validateAndSet(1.2F);
-                config.worldgen.oreSizeMultMaxY.validateAndSet(192);
-                config.worldgen.oreSizeMultMidY.validateAndSet(96);
-                config.worldgen.oreSizeMultMinY.validateAndSet(0);
                 config.worldgen.allowAncientDebrisAirExposure.validateAndSet(true);
                 config.worldgen.ancientDebrisLargeSize.validateAndSet(6);
                 config.worldgen.ancientDebrisSmallSize.validateAndSet(6);
                 config.worldgen.ancientDebrisMinAmount.validateAndSet(3);
                 config.worldgen.removeAncientDebrisHeightLimit.validateAndSet(true);
-                config.worldgen.deepslateDungeonVariant.validateAndSet(true);
-                config.worldgen.deepslateMineshaftVariant.validateAndSet(true);
-                config.worldgen.deepslateMineshaftActivatorRailChance.validateAndSet(0.03F);
-                config.worldgen.deepslateMineshaftTntMinecartChance.validateAndSet(0.015F);
-                config.worldgen.deepslateMineshaftChestMinecartMult.validateAndSet(2F);
-                config.worldgen.addRandomChestsToMansions.validateAndSet(true);
-                config.worldgen.mansionRandomChestChance.validateAndSet(0.0039F);
-                config.worldgen.addRandomChestsToMonuments.validateAndSet(true);
-                config.worldgen.monumentRandomChestChance.validateAndSet(0.0025F);
 
                 // Experience
                 config.experience.recipeXpSwapByResult.validateAndSet(orderedMap(
@@ -216,7 +199,6 @@ public enum Preset {
                 config.misc.copperTorchLightLevel.validateAndSet(12);
                 config.misc.iceFriction.validateAndSet(0.965F);
                 config.misc.blueIceFriction.validateAndSet(0.97F);
-                config.misc.caveAmbientSoundFrequency.validateAndSet(800);
                 config.misc.hoglinSpawnOnlyOnCrimsonNylium.validateAndSet(true);
                 config.misc.frostWalkerEarlyTrigger.validateAndSet(true);
                 config.misc.ironMinesObsidian.validateAndSet(true);
@@ -230,7 +212,6 @@ public enum Preset {
                 config.packs.recipeAdditions.validateAndSet(false);
                 config.packs.antiFarmPack.validateAndSet(false);
                 config.packs.customWanderingTraderTrades.validateAndSet(false);
-                config.packs.mossyDeepslateSet.validateAndSet(false);
 
                 // Exhaustion values
                 config.exhaustionValues.attack.validateAndSet(0.1F);
@@ -263,27 +244,11 @@ public enum Preset {
                 config.loot.frostWalkerIceBoxChance.validateAndSet(1.0);
 
                 // Worldgen
-                config.worldgen.dungeonChanceMult.validateAndSet(1F);
-                config.worldgen.mineshaftChanceMult.validateAndSet(1F);
-                config.worldgen.oreSizeMinMult.validateAndSet(1F);
-                config.worldgen.oreSizeMaxMult.validateAndSet(1F);
-                config.worldgen.oreSizeMultMaxY.validateAndSet(192);
-                config.worldgen.oreSizeMultMidY.validateAndSet(96);
-                config.worldgen.oreSizeMultMinY.validateAndSet(0);
                 config.worldgen.allowAncientDebrisAirExposure.validateAndSet(false);
                 config.worldgen.ancientDebrisLargeSize.validateAndSet(3);
                 config.worldgen.ancientDebrisSmallSize.validateAndSet(2);
                 config.worldgen.ancientDebrisMinAmount.validateAndSet(0);
                 config.worldgen.removeAncientDebrisHeightLimit.validateAndSet(false);
-                config.worldgen.deepslateDungeonVariant.validateAndSet(false);
-                config.worldgen.deepslateMineshaftVariant.validateAndSet(false);
-                config.worldgen.deepslateMineshaftActivatorRailChance.validateAndSet(0.03F);
-                config.worldgen.deepslateMineshaftTntMinecartChance.validateAndSet(0.015F);
-                config.worldgen.deepslateMineshaftChestMinecartMult.validateAndSet(2F);
-                config.worldgen.addRandomChestsToMansions.validateAndSet(false);
-                config.worldgen.mansionRandomChestChance.validateAndSet(0.0039F);
-                config.worldgen.addRandomChestsToMonuments.validateAndSet(false);
-                config.worldgen.monumentRandomChestChance.validateAndSet(0.0025F);
 
                 // Experience
                 config.experience.recipeXpSwapByResult.validateAndSet(Map.of());
@@ -334,7 +299,6 @@ public enum Preset {
                 config.misc.copperTorchLightLevel.validateAndSet(14);
                 config.misc.iceFriction.validateAndSet(0.98F);
                 config.misc.blueIceFriction.validateAndSet(0.989F);
-                config.misc.caveAmbientSoundFrequency.validateAndSet(6000);
                 config.misc.hoglinSpawnOnlyOnCrimsonNylium.validateAndSet(false);
                 config.misc.frostWalkerEarlyTrigger.validateAndSet(false);
                 config.misc.ironMinesObsidian.validateAndSet(false);
