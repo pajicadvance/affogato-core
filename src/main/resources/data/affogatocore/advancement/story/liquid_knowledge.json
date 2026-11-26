@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:story/smelt_iron",
+  "criteria": {
+    "liquid_knowledge": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:experience_bottle"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.liquid_knowledge.description",
+      "with": [
+        {
+          "translate": "item.minecraft.experience_bottle"
+        }
+      ]
+    },
+    "icon": {
+      "id": "minecraft:experience_bottle"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.liquid_knowledge.title"
+    }
+  },
+  "requirements": [
+    [
+      "liquid_knowledge"
+    ]
+  ]
+}

@@ -1,1 +1,7 @@
-- Fixed broken fog in CliffTree biomes with Complementary Shaders.
+- Added Guidance Advancements (`misc.guidanceAdvancements`, enabled in the Affogato preset), which explain gameplay changes made by other features and supported mods through advancements. Each change is only applied when the feature or mod it describes is enabled.
+- Added 13 new advancements:
+  - Story: Liquid Knowledge, Hearty Meal, Low Profile, Hold the Line (ReArm), Pack Mule (Tiered Backpacks), Tool Belt (Tool Pouch)
+  - Adventure: Off the Grid (MapStitch), Plant Your Flag (Bannerpoint), Ancient Wisdom, Second Helping, Cold Storage, Cursed Riches
+  - Husbandry: Seasonal Worker (Serene Seasons)
+- Rewrote the descriptions of 10 vanilla advancements to explain related changes: Suit Up, Acquire Hardware, Enchanter (Penchant), Hidden in the Depths, Sky's the Limit (Aileron), Postmortal, Voluntary Exile (Depillage), Local Brewery (Toil and Trouble, Golden Potions), Fishy Business (Simple Fishing Overhaul) and Revaulting.
+- With Guidance Advancements enabled, Suit Up now requires a piece of copper armor instead of iron armor, and follows Acquire Software when the early game extension pack is enabled.

@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "off_the_grid": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:filled_map"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.off_the_grid.description",
+      "with": [
+        {
+          "keybind": "mapstitch.key.open_world_map"
+        }
+      ]
+    },
+    "icon": {
+      "id": "mapstitch:atlas"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.off_the_grid.title"
+    }
+  },
+  "requirements": [
+    [
+      "off_the_grid"
+    ]
+  ]
+}

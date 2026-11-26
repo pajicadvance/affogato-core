@@ -1,0 +1,31 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "plant_your_flag": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": {
+          "type": "minecraft:match_block",
+          "blocks": "#minecraft:banners"
+        }
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.plant_your_flag.description"
+    },
+    "icon": {
+      "id": "minecraft:white_banner"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.plant_your_flag.title"
+    }
+  },
+  "requirements": [
+    [
+      "plant_your_flag"
+    ]
+  ]
+}

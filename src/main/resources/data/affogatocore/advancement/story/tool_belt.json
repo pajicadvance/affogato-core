@@ -1,0 +1,40 @@
+{
+  "parent": "minecraft:story/root",
+  "criteria": {
+    "tool_belt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "toolpouch:tool_pouch",
+              "toolpouch:netherite_tool_pouch"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.tool_belt.description",
+      "with": [
+        {
+          "keybind": "key.toolpouch.open_tool_pouch"
+        }
+      ]
+    },
+    "icon": {
+      "id": "toolpouch:tool_pouch"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.tool_belt.title"
+    }
+  },
+  "requirements": [
+    [
+      "tool_belt"
+    ]
+  ]
+}

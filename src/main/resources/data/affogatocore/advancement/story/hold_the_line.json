@@ -1,0 +1,40 @@
+{
+  "parent": "minecraft:story/obtain_armor",
+  "criteria": {
+    "hold_the_line": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:shield",
+              "rearm:netherite_shield"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.hold_the_line.description",
+      "with": [
+        {
+          "keybind": "key.rearm.action"
+        }
+      ]
+    },
+    "icon": {
+      "id": "minecraft:shield"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.hold_the_line.title"
+    }
+  },
+  "requirements": [
+    [
+      "hold_the_line"
+    ]
+  ]
+}

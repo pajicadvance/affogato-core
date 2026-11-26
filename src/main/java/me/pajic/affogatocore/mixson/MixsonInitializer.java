@@ -2,6 +2,7 @@ package me.pajic.affogatocore.mixson;
 
 import me.pajic.affogatocore.AffogatoCore;
 import me.pajic.affogatocore.mixson.events.AdvancementEvents;
+import me.pajic.affogatocore.mixson.events.GuidanceAdvancementEvents;
 import me.pajic.affogatocore.mixson.events.LootTableEvents;
 import me.pajic.affogatocore.mixson.events.RecipeEvents;
 import me.pajic.affogatocore.mixson.events.TagEvents;
@@ -19,6 +20,7 @@ public class MixsonInitializer {
         }
 
         AdvancementEvents.register();
+        GuidanceAdvancementEvents.register();
         LootTableEvents.register();
         RecipeEvents.register();
         TagEvents.register();

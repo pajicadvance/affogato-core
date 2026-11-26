@@ -1,0 +1,57 @@
+{
+  "parent": "minecraft:story/root",
+  "criteria": {
+    "low_profile": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:flags": {
+              "is_sneaking": true
+            },
+            "minecraft:type_specific/player": {
+              "looking_at": {
+                "minecraft:entity_type": [
+                  "minecraft:zombie",
+                  "minecraft:husk",
+                  "minecraft:drowned",
+                  "minecraft:zombie_villager",
+                  "minecraft:skeleton",
+                  "minecraft:stray",
+                  "minecraft:bogged",
+                  "minecraft:parched",
+                  "minecraft:creeper",
+                  "minecraft:spider",
+                  "minecraft:cave_spider",
+                  "minecraft:witch",
+                  "minecraft:enderman",
+                  "minecraft:pillager",
+                  "minecraft:vindicator"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.low_profile.description"
+    },
+    "icon": {
+      "id": "minecraft:leather_boots"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.low_profile.title"
+    }
+  },
+  "requirements": [
+    [
+      "low_profile"
+    ]
+  ]
+}

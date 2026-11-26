@@ -1,0 +1,28 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "cursed_riches": {
+      "trigger": "minecraft:player_generates_container_loot",
+      "conditions": {
+        "loot_tables": "minecraft:chests/desert_pyramid"
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.cursed_riches.description"
+    },
+    "icon": {
+      "id": "minecraft:chiseled_sandstone"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.cursed_riches.title"
+    }
+  },
+  "requirements": [
+    [
+      "cursed_riches"
+    ]
+  ]
+}

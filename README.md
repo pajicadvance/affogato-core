@@ -36,6 +36,7 @@ Features:
 - Suppress the log warning about world generation reading outside its write zone.
 - Night Vision Nuke: Makes night vision unobtainable in survival by removing its brewing recipes, replacing it with invisibility in loot and suspicious stew, and removing it from advancement requirements.
 - Hard Difficulty Default: Difficulty on create world screen defaults to Hard and freshly created servers default to Hard in server.properties.
+- Guidance Advancements: Adds advancements and rewrites vanilla advancement descriptions to explain gameplay changes made by other features and supported mods. Each one is only added when the feature or mod it describes is enabled.
 
 Mod integration:
 - Farmer's Delight: Adjust the nutrition and saturation of cake slices. Also applies to eating vanilla cake.

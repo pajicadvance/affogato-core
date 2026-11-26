@@ -209,6 +209,7 @@ public enum Preset {
                 config.misc.moreStoneTypesInStoneCraftingRecipes.validateAndSet(true);
                 config.misc.noVillagerRerolling.validateAndSet(true);
                 config.misc.suppressWorldgenReadWarning.validateAndSet(true);
+                config.misc.guidanceAdvancements.validateAndSet(true);
             }
             case DISABLE_ALL -> {
                 // Packs
@@ -313,6 +314,7 @@ public enum Preset {
                 config.misc.moreStoneTypesInStoneCraftingRecipes.validateAndSet(false);
                 config.misc.noVillagerRerolling.validateAndSet(false);
                 config.misc.suppressWorldgenReadWarning.validateAndSet(false);
+                config.misc.guidanceAdvancements.validateAndSet(false);
             }
         }
     }

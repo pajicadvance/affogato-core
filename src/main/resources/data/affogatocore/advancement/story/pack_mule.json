@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:story/root",
+  "criteria": {
+    "pack_mule": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tiered_backpacks:leather_backpack",
+              "tiered_backpacks:copper_backpack",
+              "tiered_backpacks:iron_backpack",
+              "tiered_backpacks:golden_backpack",
+              "tiered_backpacks:diamond_backpack",
+              "tiered_backpacks:netherite_backpack"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.pack_mule.description",
+      "with": [
+        {
+          "keybind": "key.tiered_backpacks.open_backpack"
+        }
+      ]
+    },
+    "icon": {
+      "id": "tiered_backpacks:leather_backpack"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.pack_mule.title"
+    }
+  },
+  "requirements": [
+    [
+      "pack_mule"
+    ]
+  ]
+}

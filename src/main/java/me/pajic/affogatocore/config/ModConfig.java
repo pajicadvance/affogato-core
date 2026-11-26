@@ -159,6 +159,7 @@ public class ModConfig extends Config {
         public ValidatedBoolean moreStoneTypesInStoneCraftingRecipes = new ValidatedBoolean(false);
         public ValidatedBoolean noVillagerRerolling = new ValidatedBoolean(false);
         public ValidatedBoolean suppressWorldgenReadWarning = new ValidatedBoolean(false);
+        public ValidatedBoolean guidanceAdvancements = new ValidatedBoolean(false);
     }
 
     public static class ModIntegration extends ConfigSection {

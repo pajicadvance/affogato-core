@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:husbandry/plant_seed",
+  "criteria": {
+    "seasonal_worker": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "sereneseasons:calendar"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.seasonal_worker.description"
+    },
+    "icon": {
+      "id": "sereneseasons:calendar"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.seasonal_worker.title"
+    }
+  },
+  "requirements": [
+    [
+      "seasonal_worker"
+    ]
+  ]
+}

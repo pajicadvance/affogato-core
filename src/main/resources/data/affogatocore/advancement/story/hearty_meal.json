@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:story/root",
+  "criteria": {
+    "hearty_meal": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "#c:foods"
+        }
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.hearty_meal.description"
+    },
+    "icon": {
+      "id": "minecraft:cooked_beef"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.hearty_meal.title"
+    }
+  },
+  "requirements": [
+    [
+      "hearty_meal"
+    ]
+  ]
+}

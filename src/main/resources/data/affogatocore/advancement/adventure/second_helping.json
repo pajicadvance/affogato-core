@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:adventure/under_lock_and_key",
+  "criteria": {
+    "second_helping": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": {
+          "type": "minecraft:all_of",
+          "terms": [
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "block": {
+                  "blocks": "minecraft:vault"
+                }
+              }
+            },
+            {
+              "type": "minecraft:match_tool",
+              "predicate": {
+                "items": "minecraft:emerald_block"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.affogatocore.second_helping.description"
+    },
+    "icon": {
+      "id": "minecraft:emerald_block"
+    },
+    "title": {
+      "translate": "advancements.affogatocore.second_helping.title"
+    }
+  },
+  "requirements": [
+    [
+      "second_helping"
+    ]
+  ]
+}
