@@ -36,5 +36,11 @@
   "tutorial.affogatocore.get_sticks.description": "Punch tree leaves to collect sticks",
   "tutorial.affogatocore.get_flint.title": "Get some flint",
   "tutorial.affogatocore.get_flint.description": "Punch gravel to collect flint",
-  "tutorial.affogatocore.craft_flint_axe.title": "Craft a flint axe"
+  "tutorial.affogatocore.craft_flint_axe.title": "Craft a flint axe",
+
+  "message.affogatocore.penchant_level_up_ready": "%s is ready at an enchanting table",
+  "tooltip.affogatocore.penchant_level_up_ready": "%s ready",
+  "widget.affogatocore.penchant_level_up": "→%s",
+  "widget.affogatocore.penchant_level_up.tooltip": "Level up to %s",
+  "widget.affogatocore.penchant_level_up.tooltip.pending": "%s level-ups pending"
 }

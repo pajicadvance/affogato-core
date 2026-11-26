@@ -164,7 +164,14 @@ public class ModConfig extends Config {
     public static class ModIntegration extends ConfigSection {
         public ValidatedInt fdCakeSliceFoodLevel = new ValidatedInt(2);
         public ValidatedFloat fdCakeSliceSaturationLevel = new ValidatedFloat(0.1F);
-        public ValidatedInt penchantXpCostMult = new ValidatedInt(1, 8, 1);
+        public ValidatedBoolean penchantUniqueBookCount = new ValidatedBoolean(false);
+        public ValidatedBoolean penchantPaidLevelUps = new ValidatedBoolean(false);
+        public ValidatedList<Integer> penchantTierXpCosts = new ValidatedInt(0, Integer.MAX_VALUE, 0).toList();
+        public ValidatedList<Integer> penchantTierBookRequirements = new ValidatedInt(0, Integer.MAX_VALUE, 0).toList();
+        public ValidatedMap<String, Integer> penchantEnchantmentTiers = (new ValidatedMap.Builder())
+                .keyHandler(new ValidatedString())
+                .valueHandler(new ValidatedInt(1, Integer.MAX_VALUE, 1))
+                .build();
         public ValidatedBoolean penchantProgressOnHostileKill = new ValidatedBoolean(false);
         public ValidatedInt coffinActivationRange = new ValidatedInt(48, 48, 1);
         public ValidatedBoolean mastercutterAdvancementRemoval = new ValidatedBoolean(false);

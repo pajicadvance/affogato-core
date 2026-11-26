@@ -182,7 +182,11 @@ public enum Preset {
                 // Mod integration
                 config.modIntegration.fdCakeSliceFoodLevel.validateAndSet(3);
                 config.modIntegration.fdCakeSliceSaturationLevel.validateAndSet(0.3F);
-                config.modIntegration.penchantXpCostMult.validateAndSet(3);
+                config.modIntegration.penchantUniqueBookCount.validateAndSet(true);
+                config.modIntegration.penchantPaidLevelUps.validateAndSet(true);
+                config.modIntegration.penchantTierXpCosts.validateAndSet(List.of(4, 7, 10, 14, 18));
+                config.modIntegration.penchantTierBookRequirements.validateAndSet(List.of(0, 3, 10, 16, 24));
+                config.modIntegration.penchantEnchantmentTiers.validateAndSet(affogatoPenchantTiers());
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(true);
                 config.modIntegration.coffinActivationRange.validateAndSet(8);
                 config.modIntegration.mastercutterAdvancementRemoval.validateAndSet(true);
@@ -282,7 +286,11 @@ public enum Preset {
                 // Mod integration
                 config.modIntegration.fdCakeSliceFoodLevel.validateAndSet(2);
                 config.modIntegration.fdCakeSliceSaturationLevel.validateAndSet(0.1F);
-                config.modIntegration.penchantXpCostMult.validateAndSet(1);
+                config.modIntegration.penchantUniqueBookCount.validateAndSet(false);
+                config.modIntegration.penchantPaidLevelUps.validateAndSet(false);
+                config.modIntegration.penchantTierXpCosts.validateAndSet(List.of());
+                config.modIntegration.penchantTierBookRequirements.validateAndSet(List.of());
+                config.modIntegration.penchantEnchantmentTiers.validateAndSet(Map.of());
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(false);
                 config.modIntegration.coffinActivationRange.validateAndSet(48);
                 config.modIntegration.mastercutterAdvancementRemoval.validateAndSet(false);
@@ -369,6 +377,79 @@ public enum Preset {
         stats.add(ItemStatModification.durability(16 * multiplier, "minecraft:" + material + "_chestplate"));
         stats.add(ItemStatModification.durability(14 * multiplier, "minecraft:" + material + "_leggings"));
         stats.add(ItemStatModification.durability(12 * multiplier, "minecraft:" + material + "_boots"));
+    }
+
+    private static Map<String, Integer> affogatoPenchantTiers() {
+        Map<String, Integer> tiers = new LinkedHashMap<>();
+        List<List<String>> enchantmentsByTier = List.of(
+                List.of(
+                        "minecraft:efficiency",
+                        "minecraft:knockback",
+                        "minecraft:punch",
+                        "minecraft:binding_curse",
+                        "minecraft:vanishing_curse",
+                        "butterbee:incubation_curse"
+                ),
+                List.of(
+                        "minecraft:protection",
+                        "minecraft:fire_protection",
+                        "minecraft:projectile_protection",
+                        "minecraft:blast_protection",
+                        "rearm:magic_protection",
+                        "minecraft:feather_falling",
+                        "minecraft:respiration",
+                        "minecraft:aqua_affinity",
+                        "minecraft:smite",
+                        "minecraft:bane_of_arthropods",
+                        "minecraft:flame",
+                        "minecraft:lure",
+                        "minecraft:mending",
+                        "trailiertales:reaping",
+                        "trailiertales:rebrush",
+                        "mapstitch:globetrotter"
+                ),
+                List.of(
+                        "minecraft:sharpness",
+                        "minecraft:sweeping_edge",
+                        "minecraft:fire_aspect",
+                        "farmersdelight:backstabbing",
+                        "minecraft:lunge",
+                        "rearm:crippling_throw",
+                        "rearm:bash",
+                        "minecraft:power",
+                        "minecraft:piercing",
+                        "minecraft:quick_charge",
+                        "rearm:backstep",
+                        "minecraft:loyalty",
+                        "minecraft:impaling",
+                        "minecraft:silk_touch",
+                        "minecraft:luck_of_the_sea",
+                        "minecraft:depth_strider",
+                        "minecraft:frost_walker",
+                        "minecraft:thorns",
+                        "enderscape:resonance"
+                ),
+                List.of(
+                        "minecraft:soul_speed",
+                        "minecraft:multishot",
+                        "minecraft:riptide",
+                        "minecraft:channeling",
+                        "minecraft:density",
+                        "minecraft:breach",
+                        "aileron:cloudskipper",
+                        "aileron:smokestack",
+                        "enderscape:transdimensional",
+                        "enderscape:stun_burst"
+                ),
+                List.of(
+                        "minecraft:swift_sneak",
+                        "minecraft:wind_burst"
+                )
+        );
+        for (int i = 0; i < enchantmentsByTier.size(); i++) {
+            for (String enchantment : enchantmentsByTier.get(i)) tiers.put(enchantment, i + 1);
+        }
+        return tiers;
     }
 
     @SafeVarargs

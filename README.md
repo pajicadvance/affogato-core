@@ -39,7 +39,7 @@ Features:
 
 Mod integration:
 - Farmer's Delight: Adjust the nutrition and saturation of cake slices. Also applies to eating vanilla cake.
-- Penchant: Multiply enchantment XP costs, and progress enchantments on armor and weapons by killing hostile mobs (and on Farmer's Delight knives by killing animals).
+- Penchant: Assign enchantments to tiers with configurable XP costs and book requirements, count only unique enchantments in chiseled bookshelves towards book requirements, require spending XP at an enchanting table to apply enchantment level-ups earned through use, and progress enchantments on armor and weapons by killing hostile mobs (and on Farmer's Delight knives by killing animals).
 - Mastercutter: Remove its advancements.
 
 Client features:

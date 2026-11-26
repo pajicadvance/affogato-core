@@ -48,7 +48,9 @@
     "integration.farmersdelight.FoodValuesMixin",
     "integration.iris.BiomesMixin",
     "integration.iris.StandardMacrosMixin",
-    "integration.penchant.PenchantmentDefinitionMixin",
+    "integration.penchant.EnchantmentProgressMixin",
+    "integration.penchant.PenchantmentHelperMixin",
+    "integration.penchant.PenchantmentMenuMixin",
     "integration.trailiertales.CoffinSpawnerMixin",
     "integration.universal_ores.UniversalOresBlocksMixin",
     "integration.variantsandventures.VariantsAndVenturesConfigMixin",
@@ -75,6 +77,9 @@
     "earlygame.FindTreeTutorialStepInstanceMixin",
     "earlygame.PunchTreeTutorialStepInstanceMixin",
     "earlygame.TutorialToastIconsMixin",
+    "integration.penchant.EnchantmentSlotWidgetAccessor",
+    "integration.penchant.PenchantClientMixin",
+    "integration.penchant.PenchantmentScreenMixin",
     "misc.PackSelectionModelMixin"
   ],
   "injectors": {

@@ -1,1 +1,3 @@
-- Fixed anti-farm datapack not increasing quartz ore drops.
+- Replaced the Penchant XP cost multiplier with an enchantment tier system. Enchantments can be assigned to tiers, and each tier has a configurable XP cost and chiseled bookshelf book requirement.
+- Added an option to only count unique enchantments in chiseled bookshelves towards Penchant book requirements. Plain books, regular bookshelves and lecterns no longer count when enabled.
+- Added an option to require spending XP at an enchanting table to apply Penchant enchantment level-ups earned through use. Items keep gaining progress while level-ups are pending, the player is notified when a level-up becomes available, and pending level-ups can be bought one at a time from the enchanting table's enchantment list.
