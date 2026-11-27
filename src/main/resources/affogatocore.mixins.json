@@ -80,6 +80,7 @@
     "integration.penchant.EnchantmentSlotWidgetAccessor",
     "integration.penchant.PenchantClientMixin",
     "integration.penchant.PenchantmentScreenMixin",
+    "misc.MinecraftMixin",
     "misc.PackSelectionModelMixin"
   ],
   "injectors": {

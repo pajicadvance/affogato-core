@@ -21,5 +21,7 @@ public class ModClientConfig extends Config {
     public ValidatedString targetShaderString = new ValidatedString("");
     public ValidatedBoolean disableLBGLayers = new ValidatedBoolean(false);
     public ValidatedBoolean deleteModdedSplashTexts = new ValidatedBoolean(false);
+    public ValidatedBoolean delightMapBlockLightTintFix = new ValidatedBoolean(false);
+    public ValidatedBoolean suppressSwapchainOutOfDateWarning = new ValidatedBoolean(false);
     public ValidatedBoolean langOverrides = new ValidatedBoolean(false);
 }

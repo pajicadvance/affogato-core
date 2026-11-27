@@ -2,6 +2,7 @@ package me.pajic.affogatocore.mixson;
 
 import com.google.gson.JsonElement;
 import me.pajic.affogatocore.AffogatoCore;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.packs.resources.Resource;
 import net.ramixin.mixson.Mixson;
 import net.ramixin.mixson.MixsonCodecs;
@@ -15,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -22,34 +24,40 @@ public class MixsonHelper {
 
     private static final ErrorPolicy ERROR_POLICY = AffogatoCore.DEV ? ErrorPolicy.THROW : ErrorPolicy.LOG;
 
-    public static final MixsonCodec<String> TEXT = new MixsonCodec<>() {
+    public static final MixsonCodec<String> TEXT = textCodec(".txt");
+    public static final MixsonCodec<String> FRAGMENT_SHADER = textCodec(".fsh");
+    public static final MixsonCodec<String> SHADER_INCLUDE = textCodec(".glsl");
 
-        @Override
-        public String extensionAndDot() {
-            return ".txt";
-        }
+    private static MixsonCodec<String> textCodec(String extensionAndDot) {
+        return new MixsonCodec<>() {
 
-        @Override
-        public String deserialize(Resource r) throws IOException {
-            String contents;
-            try (BufferedReader reader = r.openAsReader()) {
-                contents = reader.readAllAsString();
+            @Override
+            public String extensionAndDot() {
+                return extensionAndDot;
             }
-            return contents;
-        }
 
-        @Override
-        public Resource serialize(Resource r, String s) {
-            return new Resource(r.source(), () -> new ByteArrayInputStream(s.getBytes()), r::metadata);
-        }
+            @Override
+            public String deserialize(Resource r) throws IOException {
+                String contents;
+                try (BufferedReader reader = r.openAsReader()) {
+                    contents = reader.readAllAsString();
+                }
+                return contents;
+            }
 
-        @Override
-        public ByteArrayOutputStream export(String s) throws IOException {
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            out.write(s.getBytes());
-            return out;
-        }
-    };
+            @Override
+            public Resource serialize(Resource r, String s) {
+                return new Resource(r.source(), () -> new ByteArrayInputStream(s.getBytes(StandardCharsets.UTF_8)), r::metadata);
+            }
+
+            @Override
+            public ByteArrayOutputStream export(String s) throws IOException {
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                out.write(s.getBytes(StandardCharsets.UTF_8));
+                return out;
+            }
+        };
+    }
 
     public static void registerSingleJson(String eventName, String target, Event<JsonElement> event) {
         Mixson.registerEvent(
@@ -87,9 +95,25 @@ public class MixsonHelper {
         );
     }
 
-    public static void registerMultiText(String eventName, Predicate<Index> resourcePredicate, Event<String> event) {
+    public static void registerMultiNbt(String eventName, Predicate<Index> resourcePredicate, Event<CompoundTag> event) {
         Mixson.registerEvent(
-                TEXT,
+                MixsonCodecs.NBT,
+                Mixson.DEFAULT_PRIORITY,
+                Lifetime.PERSISTENT,
+                ERROR_POLICY,
+                eventName,
+                resourcePredicate,
+                event
+        );
+    }
+
+    public static void registerMultiText(String eventName, Predicate<Index> resourcePredicate, Event<String> event) {
+        registerMultiText(eventName, TEXT, resourcePredicate, event);
+    }
+
+    public static void registerMultiText(String eventName, MixsonCodec<String> codec, Predicate<Index> resourcePredicate, Event<String> event) {
+        Mixson.registerEvent(
+                codec,
                 Mixson.DEFAULT_PRIORITY,
                 Lifetime.PERSISTENT,
                 ERROR_POLICY,

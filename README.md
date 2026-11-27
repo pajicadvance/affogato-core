@@ -41,6 +41,7 @@ Features:
 Mod integration:
 - Farmer's Delight: Adjust the nutrition and saturation of cake slices. Also applies to eating vanilla cake.
 - Penchant: Assign enchantments to tiers with configurable XP costs and book requirements, count only unique enchantments in chiseled bookshelves towards book requirements, require spending XP at an enchanting table to apply enchantment level-ups earned through use, and progress enchantments on armor and weapons by killing hostile mobs (and on Farmer's Delight knives by killing animals), and replace enchanted books added to loot tables by Penchant's loot rework with random enchanted books when their enchantment is disabled for loot by Enchantment Disabler.
+- CliffTree: Remove leftover jigsaw blocks with no template pool from shipwreck structures, which cause log warnings when shipwrecks generate.
 - Enderscape: Add Stun Burst enchanted books to end city chests, with a configurable chance.
 - Mastercutter: Remove its advancements.
 
@@ -48,6 +49,8 @@ Client features:
 - Shader presets: If Iris is installed and shader preset files are provided, creates shader presets that can be switched from the Sodium video settings.
 - Disable LambdaBetterGrass layers.
 - Remove splash texts added by mods.
+- Suppress the log warning about the Vulkan swapchain being out of date.
+- Fix abrupt block light color changes between biomes with the Delight-map resource pack, and make its block light color follow biome block light tints.
 
 Packs (toggleable via config):
 - Affogato Early Game Changes:

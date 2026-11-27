@@ -197,6 +197,7 @@ public enum Preset {
                 config.modIntegration.penchantEnchantmentTiers.validateAndSet(affogatoPenchantTiers());
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(true);
                 config.modIntegration.penchantReplaceDisabledLootBooks.validateAndSet(true);
+                config.modIntegration.clifftreeShipwreckJigsawFix.validateAndSet(true);
                 config.modIntegration.enderscapeStunBurstInEndCities.validateAndSet(true);
                 config.modIntegration.enderscapeStunBurstChance.validateAndSet(0.05);
                 config.modIntegration.coffinActivationRange.validateAndSet(8);
@@ -304,6 +305,7 @@ public enum Preset {
                 config.modIntegration.penchantEnchantmentTiers.validateAndSet(Map.of());
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(false);
                 config.modIntegration.penchantReplaceDisabledLootBooks.validateAndSet(false);
+                config.modIntegration.clifftreeShipwreckJigsawFix.validateAndSet(false);
                 config.modIntegration.enderscapeStunBurstInEndCities.validateAndSet(false);
                 config.modIntegration.enderscapeStunBurstChance.validateAndSet(0.05);
                 config.modIntegration.coffinActivationRange.validateAndSet(48);

@@ -174,6 +174,7 @@ public class ModConfig extends Config {
                 .build();
         public ValidatedBoolean penchantProgressOnHostileKill = new ValidatedBoolean(false);
         public ValidatedBoolean penchantReplaceDisabledLootBooks = new ValidatedBoolean(false);
+        public ValidatedBoolean clifftreeShipwreckJigsawFix = new ValidatedBoolean(false);
         public ValidatedBoolean enderscapeStunBurstInEndCities = new ValidatedBoolean(false);
         public ValidatedDouble enderscapeStunBurstChance = new ValidatedDouble(0.05, 1, 0);
         public ValidatedInt coffinActivationRange = new ValidatedInt(48, 48, 1);
