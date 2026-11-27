@@ -6,9 +6,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import me.pajic.affogatocore.AffogatoCore;
+import me.pajic.affogatocore.CompatFlags;
+import me.pajic.affogatocore.integration.EnchantmentDisablerCompat;
 import me.pajic.affogatocore.mixson.MixsonHelper;
+import net.minecraft.resources.Identifier;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LootTableEvents {
     public static void register() {
@@ -60,7 +65,10 @@ public class LootTableEvents {
                               "modifier": [
                                 {
                                   "type": "minecraft:enchant_randomly",
-                                  "options": "#minecraft:curse"
+                                  "options": [
+                                    "minecraft:binding_curse",
+                                    "minecraft:vanishing_curse"
+                                  ]
                                 }
                               ]
                             },
@@ -81,11 +89,11 @@ public class LootTableEvents {
                     }
                 }
         );
-        MixsonHelper.registerMultiJson(
-                "Distribute frost walker enchantment to igloo and ice box chests",
-                Set.of("minecraft:loot_table/chests/igloo_chest", "minecraft:loot_table/chests/ancient_city_ice_box"),
+        MixsonHelper.registerSingleJson(
+                "Distribute frost walker enchantment to ice box chests",
+                "minecraft:loot_table/chests/ancient_city_ice_box",
                 context -> {
-                    if (AffogatoCore.CONFIG.loot.frostWalkerOnlyInIgloosAndIceBox.get()) {
+                    if (AffogatoCore.CONFIG.loot.frostWalkerInIceBox.get()) {
                         JsonElement pool = JsonParser.parseString("""
                         {
                           "rolls": 1,
@@ -106,9 +114,7 @@ public class LootTableEvents {
                           ]
                         }
                         """).deepCopy();
-                        double c = (context.getIndex().id().getPath().contains("igloo_chest") ?
-                                AffogatoCore.CONFIG.loot.frostWalkerIglooChance.get() :
-                                AffogatoCore.CONFIG.loot.frostWalkerIceBoxChance.get()) * 100;
+                        double c = AffogatoCore.CONFIG.loot.frostWalkerIceBoxChance.get() * 100;
                         pool.getAsJsonObject().getAsJsonArray("entries").get(0).getAsJsonObject()
                                 .addProperty("weight", c);
                         pool.getAsJsonObject().getAsJsonArray("entries").get(1).getAsJsonObject()
@@ -118,10 +124,10 @@ public class LootTableEvents {
                 }
         );
         MixsonHelper.registerSingleJson(
-                "Distribute trident enchantments to elder guardian drops",
+                "Distribute channeling and riptide enchantments to elder guardian drops",
                 "minecraft:loot_table/entities/elder_guardian",
                 context -> {
-                    if (AffogatoCore.CONFIG.loot.tridentEnchantmentsFromElderGuardians.get()) {
+                    if (AffogatoCore.CONFIG.loot.channelingAndRiptideFromElderGuardians.get()) {
                         JsonElement pool = JsonParser.parseString("""
                                 {
                                   "rolls": 1,
@@ -133,10 +139,8 @@ public class LootTableEvents {
                                         {
                                           "type": "minecraft:enchant_randomly",
                                           "options": [
-                                             "minecraft:loyalty",
-                                             "minecraft:riptide",
-                                             "minecraft:impaling",
-                                             "minecraft:channeling"
+                                             "minecraft:channeling",
+                                             "minecraft:riptide"
                                           ]
                                         }
                                       ]
@@ -149,48 +153,36 @@ public class LootTableEvents {
                 }
         );
         MixsonHelper.registerSingleJson(
-                "Distribute mace enchantments to trial chamber rewards",
-                "minecraft:loot_table/chests/trial_chambers/reward_ominous",
+                "Distribute stun burst enchantment to end city chests",
+                "minecraft:loot_table/chests/end_city_treasure",
                 context -> {
-                    if (AffogatoCore.CONFIG.loot.maceEnchantmentsInOminousVaults.get()) {
+                    if (CompatFlags.ENDERSCAPE_LOADED && AffogatoCore.CONFIG.modIntegration.enderscapeStunBurstInEndCities.get()) {
                         JsonElement pool = JsonParser.parseString("""
+                        {
+                          "rolls": 1,
+                          "entries": [
+                            {
+                              "type": "minecraft:item",
+                              "name": "minecraft:book",
+                              "modifier": [
                                 {
-                                  "rolls": 1,
-                                  "entries": [
-                                    {
-                                      "type": "minecraft:item",
-                                      "name": "minecraft:book",
-                                      "modifier": [
-                                        {
-                                          "type": "minecraft:enchant_randomly",
-                                          "options": [
-                                             "minecraft:density",
-                                             "minecraft:breach"
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
+                                  "type": "minecraft:enchant_randomly",
+                                  "options": "enderscape:stun_burst"
                                 }
-                                """).deepCopy();
+                              ]
+                            },
+                            {
+                              "type": "minecraft:empty"
+                            }
+                          ]
+                        }
+                        """).deepCopy();
+                        double c = AffogatoCore.CONFIG.modIntegration.enderscapeStunBurstChance.get() * 100;
+                        pool.getAsJsonObject().getAsJsonArray("entries").get(0).getAsJsonObject()
+                                .addProperty("weight", c);
+                        pool.getAsJsonObject().getAsJsonArray("entries").get(1).getAsJsonObject()
+                                .addProperty("weight", 100 - c);
                         context.getFile().getAsJsonObject().getAsJsonArray("pools").add(pool);
-                    }
-                }
-        );
-        MixsonHelper.registerSingleJson(
-                "Remove enchantments from non treasure tag",
-                "minecraft:tags/enchantment/non_treasure",
-                context -> {
-                    JsonArray values = context.getFile().getAsJsonObject().getAsJsonArray("values");
-                    if (AffogatoCore.CONFIG.loot.maceEnchantmentsInOminousVaults.get()) {
-                        values.remove(new JsonPrimitive("minecraft:density"));
-                        values.remove(new JsonPrimitive("minecraft:breach"));
-                    }
-                    if (AffogatoCore.CONFIG.loot.tridentEnchantmentsFromElderGuardians.get()) {
-                        values.remove(new JsonPrimitive("minecraft:loyalty"));
-                        values.remove(new JsonPrimitive("minecraft:impaling"));
-                        values.remove(new JsonPrimitive("minecraft:riptide"));
-                        values.remove(new JsonPrimitive("minecraft:channeling"));
                     }
                 }
         );
@@ -198,15 +190,78 @@ public class LootTableEvents {
                 "Remove enchantments from random loot tag",
                 "minecraft:tags/enchantment/on_random_loot",
                 context -> {
-                    JsonArray values = context.getFile().getAsJsonObject().getAsJsonArray("values");
-                    if (AffogatoCore.CONFIG.loot.frostWalkerOnlyInIgloosAndIceBox.get()) {
-                        values.remove(new JsonPrimitive("minecraft:frost_walker"));
-                    }
+                    List<String> removed = new ArrayList<>(AffogatoCore.CONFIG.loot.randomLootExcludedEnchantments.get());
                     if (AffogatoCore.CONFIG.loot.cursesOnlyInDesertPyramids.get()) {
-                        values.remove(new JsonPrimitive("minecraft:binding_curse"));
-                        values.remove(new JsonPrimitive("minecraft:vanishing_curse"));
+                        removed.add("minecraft:binding_curse");
+                        removed.add("minecraft:vanishing_curse");
+                    }
+                    removeFromTag(context.getFile(), removed);
+                }
+        );
+        MixsonHelper.registerSingleJson(
+                "Remove enchantments from non treasure tag",
+                "minecraft:tags/enchantment/non_treasure",
+                context -> removeFromTag(context.getFile(), AffogatoCore.CONFIG.loot.randomLootExcludedEnchantments.get())
+        );
+        MixsonHelper.registerMultiJson(
+                "Replace disabled enchanted books in Penchant loot modifications with random enchanted books",
+                index -> index.id().getNamespace().equals("penchant") && index.id().getPath().startsWith("penchant/loot_modification/"),
+                context -> {
+                    if (
+                            !CompatFlags.PENCHANT_LOADED ||
+                            !CompatFlags.ENCHANTMENT_DISABLER_LOADED ||
+                            !AffogatoCore.CONFIG.modIntegration.penchantReplaceDisabledLootBooks.get()
+                    ) return;
+                    JsonArray pools = context.getFile().getAsJsonObject().getAsJsonArray("pools");
+                    if (pools == null) return;
+                    for (JsonElement pool : pools) {
+                        JsonArray entries = pool.getAsJsonObject().getAsJsonArray("entries");
+                        if (entries == null) continue;
+                        for (JsonElement element : entries) {
+                            JsonObject entry = element.getAsJsonObject();
+                            if (!entry.has("name") || !entry.get("name").getAsString().equals("minecraft:book")) continue;
+                            if (!hasOnlyDisabledEnchantments(entry.get("modifier"))) continue;
+                            JsonObject modifier = new JsonObject();
+                            modifier.addProperty("type", "minecraft:enchant_randomly");
+                            modifier.addProperty("options", "#minecraft:on_random_loot");
+                            entry.add("modifier", modifier);
+                        }
                     }
                 }
         );
+    }
+
+    private static void removeFromTag(JsonElement file, List<? extends String> removed) {
+        if (removed.isEmpty()) return;
+        JsonObject obj = file.getAsJsonObject();
+        JsonArray values = obj.getAsJsonArray("values");
+        if (!obj.has("fabric:remove")) obj.add("fabric:remove", new JsonArray());
+        JsonArray remove = obj.getAsJsonArray("fabric:remove");
+        for (String id : removed) {
+            if (values != null) values.remove(new JsonPrimitive(id));
+            JsonObject entry = new JsonObject();
+            entry.addProperty("id", id);
+            entry.addProperty("required", false);
+            if (!remove.contains(entry)) remove.add(entry);
+        }
+    }
+
+    private static boolean hasOnlyDisabledEnchantments(@Nullable JsonElement modifier) {
+        if (modifier == null) return false;
+        List<JsonObject> functions = new ArrayList<>();
+        if (modifier.isJsonArray()) modifier.getAsJsonArray().forEach(e -> functions.add(e.getAsJsonObject()));
+        else functions.add(modifier.getAsJsonObject());
+        boolean found = false;
+        for (JsonObject function : functions) {
+            if (!function.has("type") || !function.get("type").getAsString().equals("minecraft:set_enchantments")) continue;
+            JsonObject enchantments = function.getAsJsonObject("enchantments");
+            if (enchantments == null) continue;
+            for (String id : enchantments.keySet()) {
+                Identifier identifier = Identifier.tryParse(id);
+                if (identifier == null || !EnchantmentDisablerCompat.isDisabledInLoot(identifier)) return false;
+                found = true;
+            }
+        }
+        return found;
     }
 }

@@ -90,13 +90,12 @@ public class ModConfig extends Config {
                 .valueHandler(new ValidatedDouble(0.0, 1.0, 0.0))
                 .build();
         public ValidatedBoolean emeraldBlockResetsVaults = new ValidatedBoolean(false);
-        public ValidatedBoolean maceEnchantmentsInOminousVaults = new ValidatedBoolean(false);
-        public ValidatedBoolean tridentEnchantmentsFromElderGuardians = new ValidatedBoolean(false);
-        public ValidatedBoolean frostWalkerOnlyInIgloosAndIceBox = new ValidatedBoolean(false);
+        public ValidatedList<String> randomLootExcludedEnchantments = new ValidatedString().toList();
+        public ValidatedBoolean channelingAndRiptideFromElderGuardians = new ValidatedBoolean(false);
+        public ValidatedBoolean frostWalkerInIceBox = new ValidatedBoolean(false);
+        public ValidatedDouble frostWalkerIceBoxChance = new ValidatedDouble(1, 1, 0);
         public ValidatedBoolean cursesOnlyInDesertPyramids = new ValidatedBoolean(false);
         public ValidatedDouble curseEnchantedBookChance = new ValidatedDouble(0.5, 1, 0);
-        public ValidatedDouble frostWalkerIglooChance = new ValidatedDouble(0.5, 1, 0);
-        public ValidatedDouble frostWalkerIceBoxChance = new ValidatedDouble(1, 1, 0);
     }
 
     public static class Worldgen extends ConfigSection {
@@ -174,6 +173,9 @@ public class ModConfig extends Config {
                 .valueHandler(new ValidatedInt(1, Integer.MAX_VALUE, 1))
                 .build();
         public ValidatedBoolean penchantProgressOnHostileKill = new ValidatedBoolean(false);
+        public ValidatedBoolean penchantReplaceDisabledLootBooks = new ValidatedBoolean(false);
+        public ValidatedBoolean enderscapeStunBurstInEndCities = new ValidatedBoolean(false);
+        public ValidatedDouble enderscapeStunBurstChance = new ValidatedDouble(0.05, 1, 0);
         public ValidatedInt coffinActivationRange = new ValidatedInt(48, 48, 1);
         public ValidatedBoolean mastercutterAdvancementRemoval = new ValidatedBoolean(false);
     }

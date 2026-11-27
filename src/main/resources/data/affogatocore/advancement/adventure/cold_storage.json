@@ -4,7 +4,7 @@
     "cold_storage": {
       "trigger": "minecraft:player_generates_container_loot",
       "conditions": {
-        "loot_tables": "minecraft:chests/igloo_chest"
+        "loot_tables": "minecraft:chests/ancient_city_ice_box"
       }
     }
   },

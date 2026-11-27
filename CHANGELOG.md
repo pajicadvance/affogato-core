@@ -1,7 +1,9 @@
-- Added Guidance Advancements (`misc.guidanceAdvancements`, enabled in the Affogato preset), which explain gameplay changes made by other features and supported mods through advancements. Each change is only applied when the feature or mod it describes is enabled.
-- Added 13 new advancements:
-  - Story: Liquid Knowledge, Hearty Meal, Low Profile, Hold the Line (ReArm), Pack Mule (Tiered Backpacks), Tool Belt (Tool Pouch)
-  - Adventure: Off the Grid (MapStitch), Plant Your Flag (Bannerpoint), Ancient Wisdom, Second Helping, Cold Storage, Cursed Riches
-  - Husbandry: Seasonal Worker (Serene Seasons)
-- Rewrote the descriptions of 10 vanilla advancements to explain related changes: Suit Up, Acquire Hardware, Enchanter (Penchant), Hidden in the Depths, Sky's the Limit (Aileron), Postmortal, Voluntary Exile (Depillage), Local Brewery (Toil and Trouble, Golden Potions), Fishy Business (Simple Fishing Overhaul) and Revaulting.
-- With Guidance Advancements enabled, Suit Up now requires a piece of copper armor instead of iron armor, and follows Acquire Software when the early game extension pack is enabled.
+Reworked enchanted book loot distribution to build on top of Penchant's loot rework:
+- Removed `loot.maceEnchantmentsInOminousVaults`.
+- Added `loot.randomLootExcludedEnchantments`, which removes the listed enchantments from random loot, including when Penchant's loot rework is enabled. The Affogato preset excludes Frost Walker, Density, Breach, Loyalty, Impaling, Riptide, Channeling and Stun Burst.
+- Replaced `loot.tridentEnchantmentsFromElderGuardians` with `loot.channelingAndRiptideFromElderGuardians`, which adds Channeling and Riptide books to elder guardian drops.
+- Replaced `loot.frostWalkerOnlyInIgloosAndIceBox` and `loot.frostWalkerIglooChance` with `loot.frostWalkerInIceBox`, which adds Frost Walker books to ancient city ice box chests.
+- `loot.cursesOnlyInDesertPyramids` now also removes curses from random loot when Penchant's loot rework is enabled.
+- The desert pyramid curse pool now only contains Curse of Binding and Curse of Vanishing, so curses added to `#minecraft:curse` by other mods are no longer included.
+- Added `modIntegration.enderscapeStunBurstInEndCities` and `modIntegration.enderscapeStunBurstChance` (enabled with a 5% chance in the Affogato preset), which add Stun Burst books to end city chests.
+- Added `modIntegration.penchantReplaceDisabledLootBooks` (enabled in the Affogato preset), which replaces enchanted books added by Penchant's loot rework with random enchanted books when their enchantment is disabled for loot by Enchantment Disabler.

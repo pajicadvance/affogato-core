@@ -123,13 +123,21 @@ public enum Preset {
                         Map.entry("minecraft:woodland_mansion", 1.0)
                 ));
                 config.loot.emeraldBlockResetsVaults.validateAndSet(true);
-                config.loot.maceEnchantmentsInOminousVaults.validateAndSet(true);
-                config.loot.tridentEnchantmentsFromElderGuardians.validateAndSet(true);
-                config.loot.frostWalkerOnlyInIgloosAndIceBox.validateAndSet(true);
+                config.loot.randomLootExcludedEnchantments.validateAndSet(List.of(
+                        "minecraft:frost_walker",
+                        "minecraft:density",
+                        "minecraft:breach",
+                        "minecraft:loyalty",
+                        "minecraft:impaling",
+                        "minecraft:riptide",
+                        "minecraft:channeling",
+                        "enderscape:stun_burst"
+                ));
+                config.loot.channelingAndRiptideFromElderGuardians.validateAndSet(true);
+                config.loot.frostWalkerInIceBox.validateAndSet(true);
+                config.loot.frostWalkerIceBoxChance.validateAndSet(1.0);
                 config.loot.cursesOnlyInDesertPyramids.validateAndSet(true);
                 config.loot.curseEnchantedBookChance.validateAndSet(0.5);
-                config.loot.frostWalkerIglooChance.validateAndSet(0.5);
-                config.loot.frostWalkerIceBoxChance.validateAndSet(1.0);
 
                 // Worldgen
                 config.worldgen.allowAncientDebrisAirExposure.validateAndSet(true);
@@ -188,6 +196,9 @@ public enum Preset {
                 config.modIntegration.penchantTierBookRequirements.validateAndSet(List.of(0, 3, 10, 16, 24));
                 config.modIntegration.penchantEnchantmentTiers.validateAndSet(affogatoPenchantTiers());
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(true);
+                config.modIntegration.penchantReplaceDisabledLootBooks.validateAndSet(true);
+                config.modIntegration.enderscapeStunBurstInEndCities.validateAndSet(true);
+                config.modIntegration.enderscapeStunBurstChance.validateAndSet(0.05);
                 config.modIntegration.coffinActivationRange.validateAndSet(8);
                 config.modIntegration.mastercutterAdvancementRemoval.validateAndSet(true);
 
@@ -240,13 +251,12 @@ public enum Preset {
                 config.loot.lootEntryReplacements.validateAndSet(Map.of());
                 config.loot.totemMap.validateAndSet(Map.of());
                 config.loot.emeraldBlockResetsVaults.validateAndSet(false);
-                config.loot.maceEnchantmentsInOminousVaults.validateAndSet(false);
-                config.loot.tridentEnchantmentsFromElderGuardians.validateAndSet(false);
-                config.loot.frostWalkerOnlyInIgloosAndIceBox.validateAndSet(false);
+                config.loot.randomLootExcludedEnchantments.validateAndSet(List.of());
+                config.loot.channelingAndRiptideFromElderGuardians.validateAndSet(false);
+                config.loot.frostWalkerInIceBox.validateAndSet(false);
+                config.loot.frostWalkerIceBoxChance.validateAndSet(1.0);
                 config.loot.cursesOnlyInDesertPyramids.validateAndSet(false);
                 config.loot.curseEnchantedBookChance.validateAndSet(0.5);
-                config.loot.frostWalkerIglooChance.validateAndSet(0.5);
-                config.loot.frostWalkerIceBoxChance.validateAndSet(1.0);
 
                 // Worldgen
                 config.worldgen.allowAncientDebrisAirExposure.validateAndSet(false);
@@ -293,6 +303,9 @@ public enum Preset {
                 config.modIntegration.penchantTierBookRequirements.validateAndSet(List.of());
                 config.modIntegration.penchantEnchantmentTiers.validateAndSet(Map.of());
                 config.modIntegration.penchantProgressOnHostileKill.validateAndSet(false);
+                config.modIntegration.penchantReplaceDisabledLootBooks.validateAndSet(false);
+                config.modIntegration.enderscapeStunBurstInEndCities.validateAndSet(false);
+                config.modIntegration.enderscapeStunBurstChance.validateAndSet(0.05);
                 config.modIntegration.coffinActivationRange.validateAndSet(48);
                 config.modIntegration.mastercutterAdvancementRemoval.validateAndSet(false);
 

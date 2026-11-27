@@ -9,9 +9,9 @@ Features:
 - Adjust exhaustion values for all vanilla actions and a few additional actions that don't cause any exhaustion in vanilla.
 - Specify loot replacements, which replace one item with another item in every loot table.
 - Add Totems of Undying to chest loot tables with a configurable chance per loot table.
-- Make Density and Breach enchanted books obtainable only from ominous trial vaults.
-- Make Loyalty, Riptide, Impaling and Channeling enchanted books obtainable only from elder guardians.
-- Make Frost Walker enchanted books obtainable only from igloo and ancient city ice box chests, with configurable chances.
+- Exclude enchantments from random loot, keeping them only in loot tables that explicitly add them.
+- Add Channeling and Riptide enchanted books to elder guardian drops.
+- Add Frost Walker enchanted books to ancient city ice box chests, with a configurable chance.
 - Make curse enchanted books obtainable only from desert pyramid chests, with a configurable chance.
 - Allow resetting trial vaults by inserting an emerald block.
 - Modify generation rules for ancient debris: vein sizes, minimum amount, air exposure and height limit.
@@ -40,7 +40,8 @@ Features:
 
 Mod integration:
 - Farmer's Delight: Adjust the nutrition and saturation of cake slices. Also applies to eating vanilla cake.
-- Penchant: Assign enchantments to tiers with configurable XP costs and book requirements, count only unique enchantments in chiseled bookshelves towards book requirements, require spending XP at an enchanting table to apply enchantment level-ups earned through use, and progress enchantments on armor and weapons by killing hostile mobs (and on Farmer's Delight knives by killing animals).
+- Penchant: Assign enchantments to tiers with configurable XP costs and book requirements, count only unique enchantments in chiseled bookshelves towards book requirements, require spending XP at an enchanting table to apply enchantment level-ups earned through use, and progress enchantments on armor and weapons by killing hostile mobs (and on Farmer's Delight knives by killing animals), and replace enchanted books added to loot tables by Penchant's loot rework with random enchanted books when their enchantment is disabled for loot by Enchantment Disabler.
+- Enderscape: Add Stun Burst enchanted books to end city chests, with a configurable chance.
 - Mastercutter: Remove its advancements.
 
 Client features:

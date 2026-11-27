@@ -47,6 +47,7 @@ dependencies {
     compileOnly("maven.modrinth:iris:${project.iris}")
     compileOnly("maven.modrinth:farmers-delight-refabricated:${project.fdrf}")
     compileOnly("maven.modrinth:penchant:${project.penchant}")
+    compileOnly("maven.modrinth:enchantment-disabler:${project.enchantment_disabler}")
     compileOnly("maven.modrinth:appleskin:${project.appleskin}")
     compileOnly("maven.modrinth:universal_ores:${project.universal_ores}")
     compileOnly("maven.modrinth:trailier-tales:${project.trailier_tales}")

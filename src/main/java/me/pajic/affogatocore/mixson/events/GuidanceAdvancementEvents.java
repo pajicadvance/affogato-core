@@ -107,11 +107,6 @@ public class GuidanceAdvancementEvents {
                 () -> "fishy_business",
                 () -> CompatFlags.SIMPLE_FISHING_OVERHAUL_LOADED
         );
-        editDescription(
-                "minecraft:advancement/adventure/revaulting",
-                () -> "revaulting",
-                () -> config().loot.maceEnchantmentsInOminousVaults.get()
-        );
     }
 
     private static void registerNewAdvancements() {
@@ -123,9 +118,9 @@ public class GuidanceAdvancementEvents {
         newAdvancement("story/tool_belt", () -> CompatFlags.TOOL_POUCH_LOADED);
         newAdvancement("adventure/off_the_grid", () -> CompatFlags.MAPSTITCH_LOADED);
         newAdvancement("adventure/plant_your_flag", () -> CompatFlags.BANNERPOINT_LOADED);
-        newAdvancement("adventure/ancient_wisdom", () -> config().loot.tridentEnchantmentsFromElderGuardians.get());
+        newAdvancement("adventure/ancient_wisdom", () -> config().loot.channelingAndRiptideFromElderGuardians.get());
         newAdvancement("adventure/second_helping", () -> config().loot.emeraldBlockResetsVaults.get());
-        newAdvancement("adventure/cold_storage", () -> config().loot.frostWalkerOnlyInIgloosAndIceBox.get());
+        newAdvancement("adventure/cold_storage", () -> config().loot.frostWalkerInIceBox.get());
         newAdvancement("adventure/cursed_riches", () -> config().loot.cursesOnlyInDesertPyramids.get());
         newAdvancement("husbandry/seasonal_worker", () -> CompatFlags.SERENE_SEASONS_LOADED);
     }
